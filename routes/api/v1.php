@@ -14,9 +14,9 @@ use App\Http\Controllers\Api\V1\Category\UpdateController;
 use App\Http\Controllers\Api\V1\User\ShowController as UserShow;
 use App\Http\Controllers\Api\V1\User\IndexController as UserIndex;
 use App\Http\Controllers\Api\V1\User\StoreController as UserStore;
+
 use App\Http\Controllers\Api\V1\User\DeleteController as UserDelete;
 use App\Http\Controllers\Api\V1\User\UpdateController as UserUpadate;
-
 use App\Http\Controllers\Api\V1\Service\ShowController as ServiceShow;
 use App\Http\Controllers\Api\V1\Service\IndexController as ServiceIndex;
 use App\Http\Controllers\Api\V1\Service\StoreController as ServiceStore;
@@ -24,8 +24,17 @@ use App\Http\Controllers\Api\V1\Service\DeleteController as ServiceDelete;
 use App\Http\Controllers\Api\V1\Service\UpdateController as ServiceUpadate;
 
 
+use App\Http\Controllers\Auth\Api\LoginController;
+use App\Http\Controllers\Auth\Api\RegisterController;
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('auth')->as('auth')->group(function(){
+    Route::post('login', LoginController::class)->name('login');
+    Route::post('logout', LoginController::class)->name('logout');
+    Route::post('register', RegisterController::class)->name('register');
 });
 
 Route::prefix('user')->as('user')->group(function(){
