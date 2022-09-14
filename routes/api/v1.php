@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('auth')->as('auth')->group(function(){
-    Route::post('/login', LoginController::class)->name('login');
+    Route::post('login', LoginController::class)->name('login');
     Route::post('logout', LogoutController::class)->name('logout');
     Route::post('register', RegisterController::class)->name('register');
 });
