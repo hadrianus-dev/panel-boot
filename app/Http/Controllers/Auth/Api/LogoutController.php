@@ -12,7 +12,7 @@ class LogoutController extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
-        dd(Auth::user()->email);
+        #dd(Auth::check());
         $user = User::where('email', Auth::user()->email)->first();
         $user->currentAccessToken()->delete();
             
