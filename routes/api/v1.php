@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\V1\Service\UpdateController as ServiceUpadate;
 
 
 use App\Http\Controllers\Auth\Api\LoginController;
+use App\Http\Controllers\Auth\Api\LogoutController;
 use App\Http\Controllers\Auth\Api\RegisterController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -32,8 +33,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('auth')->as('auth')->group(function(){
-    Route::post('login', LoginController::class)->name('login');
-    Route::post('logout', LoginController::class)->name('logout');
+    Route::post('/login', LoginController::class)->name('login');
+    Route::post('logout', LogoutController::class)->name('logout');
     Route::post('register', RegisterController::class)->name('register');
 });
 
