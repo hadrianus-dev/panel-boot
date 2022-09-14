@@ -38,7 +38,7 @@ Route::prefix('auth')->as('auth')->group(function(){
     Route::post('register', RegisterController::class)->name('register');
 });
 
-Route::prefix('user')->as('user')->group(function(){
+Route::middleware('auth:sanctum')->prefix('user')->as('user')->group(function(){
     Route::get('/', UserIndex::class)->name('index'); //route('api:v1:user:index');
     Route::post('/', UserStore::class)->name('store'); //route('api:v1:user:store');
     Route::get('{user:key}', UserShow::class)->name('show'); //route('api:v1:user:show');
