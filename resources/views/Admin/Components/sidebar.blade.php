@@ -9,7 +9,7 @@
 							<img src="base/images/profile/pic1.jpg" alt=""/>
 							<div class="d-flex align-items-center sidebar-info">
 								<div>
-									<span class="font-w400 d-block">Franklin Jr</span>
+									<span class="font-w400 d-block">{{Auth::user()->first_name}}</span>
 									<small class="text-end font-w400">Superadmin</small>
 								</div>	
 								<i class="fas fa-chevron-down"></i>
@@ -30,11 +30,11 @@
 					</div>
 				</div>
 				<ul class="metismenu" id="menu">
-                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <li class="{{ Route::currentRouteName() == 'dashboard' ? 'mm-active' : ''  }}"><a class="has-arrow " href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
-                        <ul aria-expanded="false">
+                      {{--   <ul aria-expanded="false">
 							<li><a href="index.html">Dashboard Light</a></li>
 							<li><a href="index-2.html">Dashboard Dark</a></li>
 							<li><a href="jobs-page.html">Jobs</a></li>
@@ -42,20 +42,27 @@
 							<li><a href="my-profile.html">Profile</a></li>
 							<li><a href="statistics-page.html">Statistics</a></li>
 							<li><a href="compaines.html">Companies</a></li>	
-						</ul>
+						</ul> --}}
 
                     </li>
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+					<li class="{{ Route::currentRouteName() == 'category' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-093-waving"></i>
-							<span class="nav-text">Jobs</span>
+							<span class="nav-text">Categoria</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="job-list.html">Job Lists</a></li>
-                            <li><a href="job-view.html">Job View</a></li>
-                            <li><a href="job-application.html">Job Application</a></li>
-                            <li><a href="apply-job.html">Apply Job</a></li>
-                            <li><a href="new-job.html">New Job</a></li>
-                            <li><a href="user-profile.html">User Profile</a></li>
+                            <li><a href="#">Gerenciar</a></li>
+                            <li><a href="#">Adicionar</a></li>
+                        </ul>
+                    </li>
+					<li class="{{ Route::currentRouteName() == 'service' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-093-waving"></i>
+							<span class="nav-text">Serviços</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="#">Gerenciar</a></li>
+                            <li><a href="#">Adicionar</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
