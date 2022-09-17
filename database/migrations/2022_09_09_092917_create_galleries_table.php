@@ -23,9 +23,9 @@ return new class extends Migration
 
             $table->text('cover');
 
-            $table->boolean('published')->default(false);
-            $table->foreignId('post_id')->index()->constrained()->OnDelete('CASCADE');
-            $table->foreignId('portfolio_id')->index()->constrained()->OnDelete('CASCADE');
+            $table->boolean('published')->default(true);
+            $table->foreignId('post_id')->index()->constrained()->OnDelete('CASCADE')->nullable();
+            $table->foreignId('portfolio_id')->index()->constrained()->OnDelete('CASCADE')->nullable();
             $table->timestamps();
         });
     }

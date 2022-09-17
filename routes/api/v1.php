@@ -46,7 +46,7 @@ Route::middleware('auth:sanctum')->prefix('user')->as('user')->group(function(){
     Route::delete('{user:key}', UserDelete::class)->name('delete'); //route('api:v1:user:delete');
 });
 
-Route::prefix('category')->as('category')->group(function(){
+Route::middleware('auth:sanctum')->prefix('category')->as('category')->group(function(){
     Route::get('/', IndexController::class)->name('index'); //route('api:v1:category:index');
     Route::post('/', StoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
@@ -54,7 +54,7 @@ Route::prefix('category')->as('category')->group(function(){
     Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete');
 });
 
-Route::prefix('service')->as('service')->group(function(){
+Route::middleware('auth:sanctum')->prefix('service')->as('service')->group(function(){
     Route::get('/', ServiceIndex::class)->name('index'); //route('api:v1:service:index');
     Route::post('/', ServiceStore::class)->name('store'); //route('api:v1:service:store');
     Route::get('{service:key}', ServiceShow::class)->name('show'); //route('api:v1:service:show');
