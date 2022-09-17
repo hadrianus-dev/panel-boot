@@ -8,6 +8,6 @@ class LoginController extends Component
 {
     public function render()
     {
-        return view('livewire.panel.auth.login-controller');
+        return view('livewire.panel.auth.login-controller')->layout('layouts.guest');
     }
 }
