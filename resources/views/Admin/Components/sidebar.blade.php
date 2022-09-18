@@ -6,7 +6,7 @@
 				<div class="dropdown header-profile2 ">
 					<a class="nav-link " href="javascript:void(0);"  role="button" data-bs-toggle="dropdown">
 						<div class="header-info2 d-flex align-items-center">
-							<img src="base/images/profile/pic1.jpg" alt=""/>
+							<img src="{{asset('base/images/profile/pic1.jpg')}}" alt=""/>
 							<div class="d-flex align-items-center sidebar-info">
 								<div>
 									<span class="font-w400 d-block">{{Auth::user()->first_name}}</span>
@@ -51,7 +51,7 @@
 							<span class="nav-text">Categoria</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Gerenciar</a></li>
+                            <li><a href="{{route('panelcategory')}}">Gerenciar</a></li>
                             <li><a href="#">Adicionar</a></li>
                         </ul>
                     </li>

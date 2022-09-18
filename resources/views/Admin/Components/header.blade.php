@@ -47,7 +47,7 @@
 											<li>
 												<div class="timeline-panel">
 													<div class="media me-2">
-														<img alt="image" width="50" src="base/images/avatar/1.jpg">
+														<img alt="image" width="50" src="{{asset('base/images/avatar/1.jpg')}}">
 													</div>
 													<div class="media-body">
 														<h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -80,7 +80,7 @@
 											 <li>
 												<div class="timeline-panel">
 													<div class="media me-2">
-														<img alt="image" width="50" src="base/images/avatar/1.jpg">
+														<img alt="image" width="50" src="{{asset('base/images/avatar/1.jpg')}}">
 													</div>
 													<div class="media-body">
 														<h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -184,7 +184,7 @@
 							</li>
 							<li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                                    <img src="base/images/profile/pic1.jpg" width="20" alt=""/>
+                                    <img src="{{asset('base/images/profile/pic1.jpg')}}" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="#" class="dropdown-item ai-icon">

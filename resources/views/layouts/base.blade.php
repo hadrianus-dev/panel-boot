@@ -11,6 +11,8 @@
 	<link href="{{asset('base/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
 	<link href="{{asset('base/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet">
 	
+	<!-- Datatable -->
+    <link href="{{asset('base/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 	<!-- Style css -->
     <link href="{{asset('base/css/style.css')}}" rel="stylesheet">
     @livewireStyles
@@ -61,7 +63,11 @@
     <script src="{{asset('base/vendor/global/global.min.js')}}"></script>
 	<script src="{{asset('base/vendor/chart.js/Chart.bundle.min.js')}}"></script>
 	<script src="{{asset('base/vendor/jquery-nice-select/js/jquery.nice-select.min.js')}}"></script>
-	
+		
+	<!-- Datatable -->
+	<script src="{{asset('base/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('base/js/plugins-init/datatables.init.js')}}"></script>
+
 	<!-- Apex Chart -->
 	<script src="{{asset('base/vendor/apexchart/apexchart.js')}}"></script>
 	
