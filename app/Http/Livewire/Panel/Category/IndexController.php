@@ -4,14 +4,12 @@ namespace App\Http\Livewire\Panel\Category;
 
 use Livewire\Component;
 use Domain\Category\Models\Category;
-use Illuminate\Http\JsonResponse;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use App\Http\Resources\Api\V1\Category\CategoryResource;
 
 class IndexController extends Component
 {
-    public $category;
+    public $category = [];
 
     public function mount()
     {
@@ -25,11 +23,9 @@ class IndexController extends Component
                 AllowedFilter::scope('draft'),
             ]
         )->get();
-
         
         $this->category = $Categories;
-        #dd($this->category);
-           
+        
     }
 
     public function render()
