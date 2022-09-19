@@ -14,9 +14,9 @@ class CategoryFactory
         return new CategoryValueObject(
             title: $attributes['title'],
             body: $attributes['body'],
-            description: $attributes['description'],
-            parent: $attributes['parent'], 
-            published: $attributes['published'], 
+            description: ($attributes['description']) ? $attributes['description'] : null,
+            parent: ($attributes['parent']) ? (int) $attributes['parent'] : null, 
+            published: ($attributes['published'] === '1') ? true : false, 
         );
     }
 }

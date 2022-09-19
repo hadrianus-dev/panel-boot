@@ -55,6 +55,7 @@
         @include('Admin.Components.footer')
     </div>
 
+{{-- 	@livewire('panel.category.store-controller') --}}
 
     <!--**********************************
         Scripts

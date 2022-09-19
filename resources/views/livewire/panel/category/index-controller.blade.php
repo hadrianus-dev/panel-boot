@@ -11,33 +11,34 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Profile Datatable</h4>
+                    <button type="button" class="btn btn-primary" 
+                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Adicionar Novo<span
+                        class="btn-icon-end"><i class="fa fa-plus"></i></span>
+                    </button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Name</th>
-                                    <th>Department</th>
-                                    <th>Gender</th>
-                                    <th>Education</th>
-                                    <th>Mobile</th>
-                                    <th>Email</th>
-                                    <th>Joining Date</th>
+                                    <th>Titulo</th>
+                                    <th>Categoria</th>
+                                    <th>Relaciodos</th>
+                                    <th>Status</th>
+                                    <th>Data</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($category as $item)
+                               
                                 <tr>
-                                    <td><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
-                                    <td>Tiger Nixon</td>
+                                    <td>{{$item['title']}}</td>
                                     <td>Architect</td>
                                     <td>Male</td>
-                                    <td>M.COM., P.H.D.</td>
-                                    <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                    <td>2011/04/25</td>
+                                    <td><span class="badge light badge-{{($item['published'] === true)? 'success' : 'warning'}}">
+                                        {{($item['published'] === true)? 'Publicado' : 'Pendente'}}</span></td>
+                                    <td>{{$item['created_at']->diffForHumans()}}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
@@ -45,39 +46,7 @@
                                         </div>												
                                     </td>												
                                 </tr>
-                                <tr>
-                                    <td><img class="rounded-circle" width="35" src="images/profile/small/pic2.jpg" alt=""></td>
-                                    <td>Garrett Winters</td>
-                                    <td>Accountant</td>
-                                    <td>Female</td>
-                                    <td>M.COM., P.H.D.</td>
-                                    <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                    <td>2011/07/25</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img class="rounded-circle" width="35" src="images/profile/small/pic3.jpg" alt=""></td>
-                                    <td>Ashton Cox</td>
-                                    <td>Junior Technical</td>
-                                    <td>Male</td>
-                                    <td>B.COM., M.COM.</td>
-                                    <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
-                                    <td>2009/01/12</td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                               
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -51,8 +51,8 @@
 							<span class="nav-text">Categoria</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('panelcategory')}}">Gerenciar</a></li>
-                            <li><a href="#">Adicionar</a></li>
+                            <li><a href="{{route('categoryindex')}}">Gerenciar</a></li>
+                            <li><a href="{{route('categorystore')}}">Adicionar</a></li>
                         </ul>
                     </li>
 					<li class="{{ Route::currentRouteName() == 'service' ? 'mm-active' : ''  }}">

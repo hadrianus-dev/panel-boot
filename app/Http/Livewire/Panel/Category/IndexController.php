@@ -16,7 +16,7 @@ class IndexController extends Component
         $Categories = QueryBuilder::for(
             subject: Category::class,
         )->allowedIncludes(
-            includes: ['user']
+            includes: ['services']
         )->allowedFilters(
             [
                 AllowedFilter::scope('published'),
@@ -25,7 +25,7 @@ class IndexController extends Component
         )->get();
         
         $this->category = $Categories;
-        
+        #dd($this->category);
     }
 
     public function render()
