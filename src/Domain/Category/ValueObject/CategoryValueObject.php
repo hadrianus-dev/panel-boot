@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Category\ValueObject;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryValueObject
 {
@@ -26,6 +27,7 @@ class CategoryValueObject
             'description' => Str::ucfirst($this->description),
             'published' => $this->published,
             'parent' => $this->parent, 
+            'user_id' => Auth::user()->id 
         ];
     }
 }

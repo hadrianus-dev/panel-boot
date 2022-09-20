@@ -1,8 +1,8 @@
 <div>
     <div class="row page-titles">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Table</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Datatable</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Categoria</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Lisrtagem</a></li>
         </ol>
     </div>
     <!-- row -->
@@ -10,7 +10,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Profile Datatable</h4>
+                    <h4 class="card-title">Todas as Categorias</h4>
                     <button type="button" class="btn btn-primary" 
                         data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Adicionar Novo<span
                         class="btn-icon-end"><i class="fa fa-plus"></i></span>
@@ -41,7 +41,7 @@
                                     <td>{{$item['created_at']->diffForHumans()}}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="{{route('categoryupdate', $item['key'])}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
                                             <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>												
                                     </td>												

@@ -4,6 +4,7 @@ use App\Http\Livewire\Panel\Auth\LoginController;
 use App\Http\Livewire\Panel\Auth\RegisterController;
 use App\Http\Livewire\Panel\Category\IndexController;
 use App\Http\Livewire\Panel\Category\StoreController;
+use App\Http\Livewire\Panel\Category\UpdateController;
 use App\Http\Livewire\Panel\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::middleware('auth:sanctum')->prefix('user')->as('user')->group(function(){
 Route::middleware('auth:sanctum')->prefix('category')->as('category')->group(function(){
     Route::get('/', IndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', StoreController::class)->name('store'); //route('api:v1:category:store');
+    Route::get('{category:key}', UpdateController::class)->name('update'); //route('api:v1:category:store');
     /* Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
     Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
     Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */

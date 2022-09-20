@@ -16,7 +16,7 @@ class CategoryFactory
             body: $attributes['body'],
             description: ($attributes['description']) ? $attributes['description'] : null,
             parent: ($attributes['parent']) ? (int) $attributes['parent'] : null, 
-            published: ($attributes['published'] === '1') ? true : false, 
+            published: ($attributes['published'] === '1') ? true : false
         );
     }
 }

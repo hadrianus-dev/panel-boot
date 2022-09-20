@@ -57,14 +57,13 @@ class StoreController extends Component
     public function submit()
     {
         $data = $this->validate();
-        $data['category']['user_id'] = Auth::user()->id;
         $data['category']['description'] = (isset($data['category']['description'])) 
         ? $data['category']['description'] : null;
         $data['category']['parent'] = (isset($data['category']['parent'])) 
         ? (int) $data['category']['parent'] : null;
         $data['category']['published'] = (isset($data['category']['published'])) 
         ? (int) $data['category']['published'] : null;
-        #dd($data['category']);
+        dd($data['category']);
         CreateCategory::dispatch(
             object: CategoryFactory::create(attributes: $data['category'])
         );
