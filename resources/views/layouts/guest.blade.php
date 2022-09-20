@@ -20,6 +20,7 @@
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <link href="{{asset('base/css/style.css')}}" rel="stylesheet">
+	@include('sweetalert::alert')
     @livewireStyles
 </head>
 

@@ -15,6 +15,7 @@
     <link href="{{asset('base/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 	<!-- Style css -->
     <link href="{{asset('base/css/style.css')}}" rel="stylesheet">
+	@include('sweetalert::alert')
     @livewireStyles
 </head>
 <body>
