@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,6 +10,6 @@ class DashboardController extends Controller
   
     public function __invoke(Request $request)
     {
-        return view('Web.dashboard.dashboard-controller');
+        return view('Admin.dashboard.dashboard-controller');
     }
 }

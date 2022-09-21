@@ -61,8 +61,8 @@
 							<span class="nav-text">Serviços</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Gerenciar</a></li>
-                            <li><a href="#">Adicionar</a></li>
+                            <li><a href="{{route('serviceindex')}}">Gerenciar</a></li>
+                            <li><a href="{{route('servicestore')}}">Adicionar</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

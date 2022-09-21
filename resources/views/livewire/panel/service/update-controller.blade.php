@@ -56,17 +56,17 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <select wire:model='data.parent' wire:change="filterChengeParentById" class="default-select wide form-control" id="validationCustom05">
+                                            <select wire:model='data.category_id' wire:change="filterChengeServiceById" class="default-select wide form-control" id="validationCustom05">
                                                 <option  data-display="Selecionar">Selecionar</option>
-                                                @foreach ($categoryParent->where('parent', null)->get() as $item)
-                                                @if ($item->id == $categoryData['parent'])
+                                                @foreach ($allCategory->where('published', true)->get() as $item)
+                                                @if ($item->id == $serviceData['category_id'])
                                                 <option selected value="{{$item->id}}" wire:key="{{ $item->id}}">{{$item->title}}</option>
                                                 @else
                                                 <option value="{{$item->id}}" wire:key="{{ $item->id}}">{{$item->title}}</option>
-                                                @endif
+                                                @endif 
                                                 @endforeach
                                             </select>
-                                            @error('data.parent') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            @error('data.category_id') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Please select a one.
                                             </div>
@@ -78,7 +78,7 @@
                                         </label>
                                         <div class="col-lg-10">
                                             <select wire:model='data.published' wire:change="filterChengeStatus" class="default-select wide form-control" id="validationCustom05">
-                                                <option  data-display="{{($categoryData['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
+                                                <option  data-display="{{($serviceData['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
                                                 <option value='1'>Publicar</option>
                                                 <option value='0'>Rascunho</option>
                                             </select>

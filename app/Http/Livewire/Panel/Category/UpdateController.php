@@ -12,6 +12,8 @@ class UpdateController extends Component
 {
     public $categoryData;
     public $categoryParent;
+    public $parent;
+    public $published;
 
     public $data = [
         'title',
@@ -48,12 +50,6 @@ class UpdateController extends Component
         ],
     ];
 
-    protected $listeners = ['catEdit'];
-
-    public function catEdit($id){
-        dd($id);
-    }
-
     public function mount($category)
     {
         $this->categoryData = Category::where('key', $category)->first();
@@ -62,23 +58,21 @@ class UpdateController extends Component
             'title' => $this->categoryData['title'],
             'body' => $this->categoryData->body,
             'description' => $this->categoryData->description,
+            'published' => $this->categoryData->published,
+            'parent' => $this->categoryData->parent,
         ]; 
         #dd($this->data);
-        $allCategory = new Category;
-        $this->categoryParent = $allCategory->where('parent', null)->get();
+        $this->categoryParent = new Category;
+        #$this->categoryParent = $allCategory->where('parent', null)->get();
     }
 
     public function update()
     {
-        $this->validate();
         #dd($this->data);
+        $this->validate();
         $this->data['description'] = (isset($this->data['description'])) 
         ? $this->data['description'] : null;
-        $this->data['parent'] = (isset($this->data['parent'])) 
-        ? (int) $this->data['parent'] : null;
-        $this->data['published'] = (isset($this->data['published'])) 
-        ? (int) $this->data['published'] : false;
-       # dd($this->data);
+        #dd($this->data);
         UpdateCategory::dispatch(
             Category: $this->categoryData,
             object: CategoryFactory::create(attributes: $this->data)
@@ -89,6 +83,15 @@ class UpdateController extends Component
         redirect('category');
     }
 
+    public function filterChengeParentById(){
+        $this->data['parent'] = (isset($this->data['parent'])) 
+        ? (int) $this->data['parent'] : null;
+    }
+
+    public function filterChengeStatus(){
+        $this->data['published'] = (isset($this->data['published'])) 
+        ? (int) $this->data['published'] : false;
+    }
 
     public function render()
     {
