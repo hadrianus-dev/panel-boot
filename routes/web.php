@@ -58,3 +58,12 @@ Route::middleware('auth:sanctum')->prefix('service')->as('service')->group(funct
     Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
     Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */
 });
+ 
+Route::middleware('auth:sanctum')->prefix('post')->as('post')->group(function(){
+    Route::get('/', ServiceIndexController::class)->name('index'); //route('api:v1:category:index');
+    Route::get('/store', ServiceStoreController::class)->name('store'); //route('api:v1:category:store');
+    Route::get('{post:key}', ServiceUpdateController::class)->name('update'); //route('api:v1:category:store');
+    /* Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
+    Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
+    Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */
+});
