@@ -6,6 +6,9 @@ use App\Http\Livewire\Panel\Category\IndexController;
 use App\Http\Livewire\Panel\Category\StoreController;
 use App\Http\Livewire\Panel\Category\UpdateController;
 use App\Http\Livewire\Panel\Dashboard\DashboardController;
+use App\Http\Livewire\Panel\Post\IndexController as PostIndexController;
+use App\Http\Livewire\Panel\Post\StoreController as PostStoreController;
+use App\Http\Livewire\Panel\Post\UpdateController as PostUpdateController;
 use App\Http\Livewire\Panel\Service\IndexController as ServiceIndexController;
 use App\Http\Livewire\Panel\Service\StoreController as ServiceStoreController;
 use App\Http\Livewire\Panel\Service\UpdateController as ServiceUpdateController;
@@ -60,9 +63,9 @@ Route::middleware('auth:sanctum')->prefix('service')->as('service')->group(funct
 });
  
 Route::middleware('auth:sanctum')->prefix('post')->as('post')->group(function(){
-    Route::get('/', ServiceIndexController::class)->name('index'); //route('api:v1:category:index');
-    Route::get('/store', ServiceStoreController::class)->name('store'); //route('api:v1:category:store');
-    Route::get('{post:key}', ServiceUpdateController::class)->name('update'); //route('api:v1:category:store');
+    Route::get('/', PostIndexController::class)->name('index'); //route('api:v1:category:index');
+    Route::get('/store', PostStoreController::class)->name('store'); //route('api:v1:category:store');
+    Route::get('{post:key}', PostUpdateController::class)->name('update'); //route('api:v1:category:store');
     /* Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
     Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
     Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */

@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace Domain\Shared\Helpers\Upload;
 
-use Illuminate\Database\Eloquent\Model;
-
-class UploadImage
+use Illuminate\Support\Str;
+use Domain\Shared\Helpers\TypeFile\ImageValidateType;
+ 
+trait UploadImage
 {
-    public static function withoutInterventionImage(Model $model): void
+    public function ImageUpload(ImageValidateType $Image, string $titleImage = null, 
+    string $pathImage = null): String
     {
-        
-    }
-
-    public static function withInterventionImage(Model $model): void
-    {
-        
+        (!$titleImage) ? $titleImage = Str::random(10) : $titleImage;
+        $getExtension = strtolower($Image->getClientOriginalExtension()); 
+        $ImageFullName = strtolower($titleImage .'-'. uniqid().'.'. $getExtension);
+        $mountPathImage = ($pathImage !== null) ? 'images/'.$pathImage : 'images/';   
+        $theImagePath = $mountPathImage.$ImageFullName;
+        $success = $Image->storeAs($mountPathImage, $ImageFullName);
+ 
+        return $theImagePath; // Just return image
     }
 }

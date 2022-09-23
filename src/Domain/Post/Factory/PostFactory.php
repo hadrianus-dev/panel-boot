@@ -14,6 +14,7 @@ class PostFactory
             title: $attributes['title'],
             body: $attributes['body'],
             description: $attributes['description'],
+            published: $attributes['published'],
             cover: $attributes['cover'], 
             category_id: $attributes['category_id'], 
             user_id: $attributes['user_id'], 

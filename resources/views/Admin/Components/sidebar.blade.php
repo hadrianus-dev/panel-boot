@@ -47,7 +47,7 @@
                     </li>
 					<li class="{{ Route::currentRouteName() == 'category' ? 'mm-active' : ''  }}">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-093-waving"></i>
+							<i class="flaticon-043-menu"></i>
 							<span class="nav-text">Categoria</span>
 						</a>
                         <ul aria-expanded="false">
@@ -63,6 +63,16 @@
                         <ul aria-expanded="false">
                             <li><a href="{{route('serviceindex')}}">Gerenciar</a></li>
                             <li><a href="{{route('servicestore')}}">Adicionar</a></li>
+                        </ul>
+                    </li>
+					<li class="{{ Route::currentRouteName() == 'post' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-022-copy"></i>
+							<span class="nav-text">Postagens</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('postindex')}}">Gerenciar</a></li>
+                            <li><a href="{{route('poststore')}}">Adicionar</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -192,12 +202,12 @@
                     </li>
                 </ul>
 				<div class="plus-box">
-					<p class="fs-14 font-w600 mb-2">Let Jobick Managed<br>Your Resume Easily<br></p>
-					<p>Lorem ipsum dolor sit amet</p>
+					<p class="fs-14 font-w600 mb-2">Inside-Panel<br>Gerenciamento total<br></p>
+					<p>Painel de gestão do website</p>
 				</div>
 				<div class="copyright">
-					<p><strong>Jobick Job Admin</strong> © 2021 All Rights Reserved</p>
-					<p class="fs-12">Made with <span class="heart"></span> by DexignLabs</p>
+					<p><strong>Inside Panel</strong> © 2022 All Rights Reserved</p>
+					<p class="fs-12">Made with <span class="heart"></span> by Inside Linked</p>
 				</div>
 			</div>
         </div>

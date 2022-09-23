@@ -13,7 +13,7 @@ class PostValueObject
         public null|string $body = null,
         public null|string $description = null,
         public null|bool $published = false,
-        public null|string $cover,
+        public null|string $cover = null,
         public int $category_id,
         public int $user_id
     )

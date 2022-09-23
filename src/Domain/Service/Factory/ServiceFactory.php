@@ -14,7 +14,7 @@ class ServiceFactory
             title: $attributes['title'],
             body: $attributes['body'],
             description: $attributes['description'],
-            published: ($attributes['published'] === 1) ? true : false, 
+            published: (($attributes['published'] === 1 || $attributes['published'] === true)) ? true : false, 
             category_id: $attributes['category_id'], 
         );
     }
