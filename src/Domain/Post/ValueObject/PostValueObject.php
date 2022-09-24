@@ -24,8 +24,8 @@ class PostValueObject
         return [
             'title' => Str::ucfirst($this->title),
             'slug' => Str::slug($this->title),
-            'body' => Str::ucfirst($this->body),
-            'description' => Str::ucfirst($this->description),
+            'body' => $this->body,
+            'description' => $this->description,
             'published' => $this->published,
             'cover' => $this->cover,
             'category_id' => $this->category_id,

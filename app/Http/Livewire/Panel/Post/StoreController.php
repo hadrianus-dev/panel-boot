@@ -3,12 +3,13 @@
 namespace App\Http\Livewire\Panel\Post;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 use Domain\Post\Models\Post;
+use Livewire\WithFileUploads;
 use Domain\Post\Jobs\CreatePost;
 use Domain\Category\Models\Category;
 use Domain\Post\Factory\PostFactory;
 use Illuminate\Support\Facades\Auth;
-use Livewire\WithFileUploads;
 
 class StoreController extends Component
 {
@@ -19,6 +20,7 @@ class StoreController extends Component
     public $categories;
 
     public $cover;
+    private $coverFullName;
     public $covers = [];
     
     protected $rules = [
@@ -67,32 +69,34 @@ class StoreController extends Component
 
     public function submit()
     {
-        #dd($this->cover);
         $data = $this->validate();
-        $getData = $this->setData($data['post']);
-        dd($getData);
+        $data['post']['user_id'] = Auth::user()->id;
+        $data['post']['cover'] = $this->setNameCover($data);
+        
         CreatePost::dispatch(
-            object: PostFactory::create(attributes: $getData)
+            object: PostFactory::create(attributes: $data['post'])
         );
-
+        $this->ImageUpload();
         return redirect('post');
     }
 
-    public function setData(array $data): array
+    private function setNameCover($data): string
     {
-        $data['description'] = (isset($data['description'])) 
-        ? $data['description'] : null;
-        $data['category_id'] = (isset($data['category_id'])) 
-        ? (int) $data['category_id'] : null;
-        $data['published'] = (isset($data['published'])) 
-        ? (int) $data['published'] : null; 
-        $data['user_id'] = Auth::user()->id;
-        /* $data['cover'] = $this->cover;
-        $data['covers'] = (isset($this->covers))? $this->covers : null; */
-        session(['cover' => $data['cover']]);
-        session(['covers' => $data['covers']]);
-
-        return $data;
+        $getExtension = $data['cover']->getClientOriginalExtension(); 
+        $ImageFullName = Str::slug($data['post']['title']) .'-'. uniqid().'.'. $getExtension;
+        $mountPathImage = 'images/posts';  
+        $theImagePath = $mountPathImage.'/'.$ImageFullName;
+        $this->coverFullName = $ImageFullName;
+        return $theImagePath;
+    }
+   
+    public function ImageUpload(): void
+    {
+        $image = $this->validate([
+            'cover' => 'image|required'
+        ]);
+        $mountPathImage = 'images/posts';  
+        $image['cover']->storeAs('public/'.$mountPathImage, $this->coverFullName);
     }
 
     public function render()

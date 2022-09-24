@@ -12,6 +12,7 @@ trait UploadImage
     public function ImageUpload(ImageValidateType $Image, string $titleImage = null, 
     string $pathImage = null): String
     {
+        #dd($Image);
         (!$titleImage) ? $titleImage = Str::random(10) : $titleImage;
         $getExtension = strtolower($Image->getClientOriginalExtension()); 
         $ImageFullName = strtolower($titleImage .'-'. uniqid().'.'. $getExtension);
