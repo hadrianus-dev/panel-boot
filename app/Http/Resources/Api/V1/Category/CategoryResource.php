@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\V1\Category;
 
+use App\Http\Resources\Api\Tronus\User\UserResource as UserUserResource;
 use App\Http\Resources\Api\V1\User\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -31,7 +32,9 @@ class CategoryResource extends JsonResource
                 'updated_at' => $this->updated_at,
                 'deleted_at' => $this->deleted_at,
             ],
-            'relationships' => [],
+            'relationships' => [
+                'user' => new UserUserResource($this->whenLoaded('user')),
+            ],
             'links' => [
                 'self' => route('api:v1categoryshow', $this->key),
                 'parent' => route('api:v1categoryindex'),

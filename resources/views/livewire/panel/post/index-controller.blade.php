@@ -21,6 +21,7 @@
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Titulo</th>
                                     <th>Categoria</th>
                                     <th>Relaciodos</th>
@@ -30,9 +31,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($post as $item)
-                               
+                                @foreach ($post as $item)   
                                 <tr>
+                                    <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$item['cover'])}}" alt="NULL"></td>
                                     <td>{{$item['title']}}</td>
                                     <td>Architect</td>
                                     <td>Male</td>

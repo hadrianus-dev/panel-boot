@@ -9,6 +9,7 @@ use Livewire\WithFileUploads;
 use Domain\Post\Jobs\CreatePost;
 use Domain\Category\Models\Category;
 use Domain\Post\Factory\PostFactory;
+use Domain\Shared\Helpers\Upload\UploadImage;
 use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Component

@@ -10,11 +10,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{$data['title']}}</h4>
+                    <h4 class="card-title">{{$post['title']}}</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
-                        <form wire:submit.prevent='update' class="needs-validation" novalidate >
+                        <form wire:submit.prevent='update' class="needs-validation" enctype="multipart/form-data" method="post" novalidate >
+                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="mb-3 row">
@@ -22,8 +23,8 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='data.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
-                                            @error('data.title') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model='post.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            @error('post.title') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria
                                             </div>
@@ -34,8 +35,8 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='data.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
-                                            @error('data.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            <textarea wire:model='post.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
+                                            @error('post.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, precisa inserir uma breve Ddescrição
                                             </div>
@@ -44,8 +45,8 @@
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição Completa</label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='data.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
-                                            @error('data.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            <textarea wire:model='post.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            @error('post.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, precisa inserir uma breve Ddescrição
                                             </div>
@@ -56,17 +57,13 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <select wire:model='data.parent' wire:change="filterChengeParentById" class="default-select wide form-control" id="validationCustom05">
+                                            <select wire:model='post.category_id' class="default-select wide form-control" id="validationCustom05">
                                                 <option  data-display="Selecionar">Selecionar</option>
-                                                @foreach ($categoryParent->where('parent', null)->get() as $item)
-                                                @if ($item->id == $categoryData['parent'])
-                                                <option selected value="{{$item->id}}" wire:key="{{ $item->id}}">{{$item->title}}</option>
-                                                @else
-                                                <option value="{{$item->id}}" wire:key="{{ $item->id}}">{{$item->title}}</option>
-                                                @endif
+                                                @foreach ($postCategory as $item)
+                                                <option value="{{$item->id}}">{{$item->title}}</option>
                                                 @endforeach
                                             </select>
-                                            @error('data.parent') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            @error('post.category_id') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Please select a one.
                                             </div>
@@ -77,17 +74,83 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <select wire:model='data.published' wire:change="filterChengeStatus" class="default-select wide form-control" id="validationCustom05">
-                                                <option  data-display="{{($categoryData['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
-                                                <option value='1'>Publicar</option>
-                                                <option value='0'>Rascunho</option>
+                                            <select wire:model='post.published' class="default-select wide form-control" id="validationCustom05">
+                                                <option  data-display="Selecionar">Selecionar</option>
+                                                <option value="1">Publicar</option>
+                                                <option value="0">Rascunho</option>
                                             </select>
-                                            @error('data.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            @error('post.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Please select a one.
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-lg-2 col-form-label" for="validationCustom05">Capa & Imagens adicionais
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="col-lg-5">
+                                            <input type="file" wire:model='cover' class="form-control" placeholder="Tirulo da categoria" required>
+                                            @error('cover') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <div class="invalid-feedback">
+                                                Por favor, informe um titulo para esta categoria
+                                            </div>
+                                            @error('cover') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            <div class="invalid-feedback">
+                                                Please select a one.
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <input type="file" multiple wire:model='covers' class="form-control" placeholder="Tirulo da categoria" required>
+                                            @error('covers') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <div class="invalid-feedback">
+                                                Por favor, informe um titulo para esta categoria
+                                            </div>
+                                            @error('covers') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            <div class="invalid-feedback">
+                                                Please select a one.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 row">
+                                        <label class="col-lg-2 col-form-label" for="validationCustom05">Previsualizações</label>
+                                        <div class="col-lg-5">
+                                            <div class="profile-interest">
+                                                <h5 class="text-primary d-inline">Prever Capa</h5>
+                                                @if ($cover)
+                                                    <a href="#" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-10">
+                                                        <img src="{{ ($cover) ? $cover->temporaryUrl() : asset('storage/'.$oldCover) }}" alt="" class="img-fluid mt-4 mb-4 w-100">
+                                                    </a>
+                                                @elseif ($oldCover !== null)
+                                                    <a href="#" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-10">
+                                                        <img src="{{ asset('storage/'.$oldCover) }}" alt="" class="img-fluid mt-4 mb-4 w-100">
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <div class="profile-interest">
+                                                <h5 class="text-primary d-inline">Prever Relacionados (Máximo quatros arquivos)</h5>
+                                                <div class="row mt-4 sp4" id="lightgallery">
+                                                    @if ($covers)
+                                                        @foreach ($covers as $item)
+                                                            <a href="#" class="mb-1 col-lg-4 col-xl-6 col-sm-4 col-6">
+                                                                <img src="{{ $item->temporaryUrl() }}" alt="" class="img-fluid">
+                                                            </a>
+                                                        @endforeach
+                                                    @elseif ($oldCovers !== null)
+                                                        @foreach ($oldCovers as $item)
+                                                            <a href="#" class="mb-1 col-lg-4 col-xl-6 col-sm-4 col-6">
+                                                                <img src="{{ asset('storage/'.$item['cover']) }}" alt="" class="img-fluid">
+                                                            </a>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary">Salvar<span
                                             class="btn-icon-end"><i class="fa fa-plus"></i></span>

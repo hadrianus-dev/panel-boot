@@ -3,94 +3,150 @@
 namespace App\Http\Livewire\Panel\Post;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
+use Domain\Post\Models\Post;
+use Livewire\WithFileUploads;
+use Domain\Post\Jobs\UpdatePost;
 use Domain\Category\Models\Category;
+use Domain\Gallery\Factory\GalleryFactory;
+use Domain\Gallery\Jobs\CreateGallery;
+use Domain\Gallery\Models\Gallery;
+use Domain\Post\Factory\PostFactory;
 use Illuminate\Support\Facades\Auth;
-use Domain\Category\Jobs\UpdateCategory;
-use Domain\Category\Factory\CategoryFactory;
 
 class UpdateController extends Component
 {
-    public $categoryData;
-    public $categoryParent;
-    public $parent;
-    public $published;
+    use WithFileUploads;
 
-    public $data = [
-        'title',
-        'body',
-        'description',
-        'published',
-        'parent',
-    ];
+    public $post;
+
+    public $categories;
+
+    public $cover;
+    public $oldCover;
+    public $oldCovers;
+    private $coverFullName;
+    public $covers = [];
     
     protected $rules = [
-        'data.title' => [
+        'post.title' => [
             'required',
             'string',
             'min:3',
-            'max:255'
+            'max:255',
         ],
-        'data.body' => [
+        'post.body' => [
             'required',
             'string',
             'min:3',
         ],
-        'data.description' => [
+        'post.description' => [
             'nullable',
             'string',
             'max:120',
         ],
-        'data.parent' => [
+        'post.category_id' => [
             'nullable',
             'integer',
         ],
-        'data.published' => [
+        'post.published' => [
             'nullable',
             'boolean',
         ],
+        'cover' => [
+            'nullable',
+        ],
+        'covers' => [
+            'nullable',
+        ],
     ];
 
-    public function mount($category)
+    public function mount(Category $modelPost, Gallery $gallery, Post $post)
     {
-        $this->categoryData = Category::where('key', $category)->first();
-        #dd($this->categoryData);
-        $this->data = [
-            'title' => $this->categoryData['title'],
-            'body' => $this->categoryData->body,
-            'description' => $this->categoryData->description,
-            'published' => $this->categoryData->published,
-            'parent' => $this->categoryData->parent,
-        ]; 
-        #dd($this->data);
-        $this->categoryParent = new Category;
-        #$this->categoryParent = $allCategory->where('parent', null)->get();
+        $this->post = $post;
+        $this->oldCovers = $gallery::where('post_id', $post['id'])->get();
+        #dd($this->oldCovers);
+        if($this->post['cover'] !== null):
+            $this->oldCover = $this->post['cover'];
+        endif;
+        $this->postCategory = $modelPost->where('parent', null)->get();
     }
 
     public function update()
     {
-        #dd($this->data);
-        $this->validate();
-        $this->data['description'] = (isset($this->data['description'])) 
-        ? $this->data['description'] : null;
-        #dd($this->data);
-        UpdateCategory::dispatch(
-            Category: $this->categoryData,
-            object: CategoryFactory::create(attributes: $this->data)
+        $data = $this->validate();
+        $data['post']['user_id'] = Auth::user()->id;
+        #dd($data['post']);
+        if($this->cover):
+            $data['post']['cover'] = $this->setNameCover($data);
+        else:
+            $data['post']['cover'] = $this->post['cover'];
+        endif;
+        
+        UpdatePost::dispatch(
+            Post: $this->post,
+            object: PostFactory::create(attributes: $data['post'])
+        );
+        if($this->cover):
+            $this->ImageUpload();
+        endif;
+        if($this->covers):
+            $this->UploadGallery();
+        endif;
+        return redirect('post');
+    }
+
+    private function setNameCover($data): string
+    {
+        $getExtension = $data['cover']->getClientOriginalExtension(); 
+        $ImageFullName = Str::slug($data['post']['title']) .'-'. uniqid().'.'. $getExtension;
+        $mountPathImage = 'images/posts';  
+        $theImagePath = $mountPathImage.'/'.$ImageFullName;
+        $this->coverFullName = $ImageFullName;
+        return $theImagePath;
+    }
+   
+    public function ImageUpload(): void
+    {
+        $image = $this->validate([
+            'cover' => 'image|required'
+        ]);
+        $mountPathImage = 'images/posts';  
+        $image['cover']->storeAs('public/'.$mountPathImage, $this->coverFullName);
+    }
+   
+    public function UploadGallery(): void
+    {
+        $images = $this->validate([
+            'covers' => 'nullable'
+        ]);
+        
+        if($this->covers):
+            foreach($images['covers'] as $image):
+                #dd($image);
+                $getExtension = $image->getClientOriginalExtension(); 
+                $ImageFullName = Str::slug($this->post['title']) .'-'. uniqid().'.'. $getExtension;
+                $mountPathImage = 'images/posts';  
+                $theImagePath = $mountPathImage.'/'.$ImageFullName;
+                $this->setGallery($theImagePath);
+                $image->storeAs('public/'.$mountPathImage, $ImageFullName);
+            endforeach;
+        endif;
+    }
+
+    private function setGallery($path): bool
+    {
+        $data = [
+            'published' => true,
+            'post_id' => $this->post['id'],
+            'cover' => $path
+        ];
+        #dd($data);
+        CreateGallery::dispatch(
+            GalleryFactory::create($data)
         );
 
-        $this->categoryData->fresh();
-
-        redirect('category');
-    }
-
-    public function filterChengeParentById(){
-        $this->data['parent'] = (isset($this->data['parent'])) 
-        ? (int) $this->data['parent'] : null;
-    }
-
-    public function filterChengeStatus(){
-        $this->data['published'] = (isset($this->data['published'])) 
-        ? (int) $this->data['published'] : false;
+        return true;
     }
 
     public function render()

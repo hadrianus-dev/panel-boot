@@ -18,12 +18,8 @@ return new class extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->string('title')->unique();
-            $table->text('description')->nullable();
-
-            $table->text('cover');
-
             $table->boolean('published')->default(true);
+            $table->text('cover');
             $table->foreignId('post_id')->index()->constrained()->OnDelete('CASCADE')->nullable();
             $table->foreignId('portfolio_id')->index()->constrained()->OnDelete('CASCADE')->nullable();
             $table->timestamps();
