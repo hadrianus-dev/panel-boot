@@ -7,12 +7,14 @@ use Illuminate\Support\Str;
 use Domain\Post\Models\Post;
 use Livewire\WithFileUploads;
 use Domain\Post\Jobs\UpdatePost;
-use Domain\Category\Models\Category;
-use Domain\Gallery\Factory\GalleryFactory;
-use Domain\Gallery\Jobs\CreateGallery;
 use Domain\Gallery\Models\Gallery;
+use Illuminate\Support\Facades\DB;
+use Domain\Category\Models\Category;
 use Domain\Post\Factory\PostFactory;
 use Illuminate\Support\Facades\Auth;
+use Domain\Gallery\Jobs\CreateGallery;
+use Illuminate\Support\Facades\Storage;
+use Domain\Gallery\Factory\GalleryFactory;
 
 class UpdateController extends Component
 {
@@ -122,6 +124,7 @@ class UpdateController extends Component
         ]);
         
         if($this->covers):
+            $this->deleteOlldFiles();
             foreach($images['covers'] as $image):
                 #dd($image);
                 $getExtension = $image->getClientOriginalExtension(); 
@@ -141,12 +144,23 @@ class UpdateController extends Component
             'post_id' => $this->post['id'],
             'cover' => $path
         ];
-        #dd($data);
+
         CreateGallery::dispatch(
             GalleryFactory::create($data)
         );
 
         return true;
+    }
+
+    private function deleteOlldFiles()
+    {
+        if($this->oldCovers):
+            for ($i=0; $i < count($this->oldCovers); $i++) { 
+                $cover = $this->oldCovers[$i]['cover'];
+                Storage::disk('public')->delete($cover);
+            }
+            DB::table('galleries')->where('post_id', $this->post['id'])->delete();
+        endif;
     }
 
     public function render()
