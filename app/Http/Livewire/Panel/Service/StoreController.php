@@ -27,7 +27,7 @@ class StoreController extends Component
             'string',
             'min:3',
             'max:255',
-            'unique:categories,title'
+            'unique:services,title'
         ],
         'service.body' => [
             'required',

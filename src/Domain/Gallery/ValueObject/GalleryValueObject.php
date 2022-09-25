@@ -12,7 +12,8 @@ class GalleryValueObject
 {
     public function __construct(
         public null|bool $published = false,
-        public null|string $cover,
+        public null|string $cover = null,
+        public null|bool $status = null,
         public null|int $post_id = null,
         public null|int $portfolio_id = null
     )
@@ -27,6 +28,7 @@ class GalleryValueObject
         return [
             'published' => $this->published,
             'cover' => $this->cover,
+            'status' => $this->status,
             'post_id' => ($this->post_id != null) ? $this->post_id : null,
             'portfolio_id' => ($this->portfolio_id != null) ? $this->portfolio_id : null,
         ];

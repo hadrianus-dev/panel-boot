@@ -75,7 +75,17 @@
                             <li><a href="{{route('poststore')}}">Adicionar</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+					<li class="{{ Route::currentRouteName() == 'post' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-045-heart"></i>
+							<span class="nav-text">Portifólio</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('portfolioindex')}}">Gerenciar</a></li>
+                            <li><a href="{{route('portfoliostore')}}">Adicionar</a></li>
+                        </ul>
+                    </li>
+                    {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
 						<i class="flaticon-050-info"></i>
 							<span class="nav-text">Apps</span>
 						</a>
@@ -199,7 +209,7 @@
                             <li><a href="./page-lock-screen.html">Lock Screen</a></li>
                             <li><a href="./empty-page.html">Empty Page</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
 				<div class="plus-box">
 					<p class="fs-14 font-w600 mb-2">Inside-Panel<br>Gerenciamento total<br></p>

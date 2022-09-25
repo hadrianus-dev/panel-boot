@@ -23,6 +23,7 @@ class Gallery extends Model
         'key',
         'published',
         'cover',
+        'status',
         'post_id',
         'portfolio_id'
     ];

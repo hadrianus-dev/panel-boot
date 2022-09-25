@@ -6,6 +6,9 @@ use App\Http\Livewire\Panel\Category\IndexController;
 use App\Http\Livewire\Panel\Category\StoreController;
 use App\Http\Livewire\Panel\Category\UpdateController;
 use App\Http\Livewire\Panel\Dashboard\DashboardController;
+use App\Http\Livewire\Panel\Portfolio\IndexController as PortfolioIndexController;
+use App\Http\Livewire\Panel\Portfolio\StoreController as PortfolioStoreController;
+use App\Http\Livewire\Panel\Portfolio\UpdateController as PortfolioUpdateController;
 use App\Http\Livewire\Panel\Post\IndexController as PostIndexController;
 use App\Http\Livewire\Panel\Post\StoreController as PostStoreController;
 use App\Http\Livewire\Panel\Post\UpdateController as PostUpdateController;
@@ -48,25 +51,22 @@ Route::middleware('auth:sanctum')->prefix('category')->as('category')->group(fun
     Route::get('/', IndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', StoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{category:key}', UpdateController::class)->name('update'); //route('api:v1:category:store');
-    /* Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
-    Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
-    Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */
 });
  
 Route::middleware('auth:sanctum')->prefix('service')->as('service')->group(function(){
     Route::get('/', ServiceIndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', ServiceStoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{service:key}', ServiceUpdateController::class)->name('update'); //route('api:v1:category:store');
-    /* Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
-    Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
-    Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */
 });
  
 Route::middleware('auth:sanctum')->prefix('post')->as('post')->group(function(){
     Route::get('/', PostIndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', PostStoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{post:key}', PostUpdateController::class)->name('update'); //route('api:v1:category:store');
-    /* Route::get('{category:key}', ShowController::class)->name('show'); //route('api:v1:category:show');
-    Route::patch('{category:key}'1, UpdateController::class)->name('update'); //route('api:v1:category:update');
-    Route::delete('{category:key}', DeleteController::class)->name('delete'); //route('api:v1:category:delete'); */
+});
+ 
+Route::middleware('auth:sanctum')->prefix('portfolio')->as('portfolio')->group(function(){
+    Route::get('/', PortfolioIndexController::class)->name('index'); //route('api:v1:category:index');
+    Route::get('/store', PortfolioStoreController::class)->name('store'); //route('api:v1:category:store');
+    Route::get('{portfolio:key}', PortfolioUpdateController::class)->name('update'); //route('api:v1:category:store');
 });

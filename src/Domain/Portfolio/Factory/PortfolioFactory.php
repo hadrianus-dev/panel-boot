@@ -16,7 +16,9 @@ class PortfolioFactory
             description: $attributes['description'],
             date_start: $attributes['date_start'],
             date_finish: $attributes['date_finish'],
-            service_id: $attributes['service_id'], 
+            service_id: (isset($attributes['service_id'])) ? (int) $attributes['service_id'] : null, 
+            published: $attributes['published'], 
         );
     }
+
 }
