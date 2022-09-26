@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('key')->unique();
             $table->boolean('published')->default(true);
+            $table->boolean('status')->nullable();
             $table->text('cover');
             $table->foreignId('post_id')->index()->constrained()->OnDelete('CASCADE')->nullable();
             $table->foreignId('portfolio_id')->index()->constrained()->OnDelete('CASCADE')->nullable();

@@ -6,6 +6,9 @@ use App\Http\Livewire\Panel\Category\IndexController;
 use App\Http\Livewire\Panel\Category\StoreController;
 use App\Http\Livewire\Panel\Category\UpdateController;
 use App\Http\Livewire\Panel\Dashboard\DashboardController;
+use App\Http\Livewire\Panel\Enterprise\IndexController as EnterpriseIndexController;
+use App\Http\Livewire\Panel\Enterprise\StoreController as EnterpriseStoreController;
+use App\Http\Livewire\Panel\Enterprise\UpdateController as EnterpriseUpdateController;
 use App\Http\Livewire\Panel\Portfolio\IndexController as PortfolioIndexController;
 use App\Http\Livewire\Panel\Portfolio\StoreController as PortfolioStoreController;
 use App\Http\Livewire\Panel\Portfolio\UpdateController as PortfolioUpdateController;
@@ -69,4 +72,10 @@ Route::middleware('auth:sanctum')->prefix('portfolio')->as('portfolio')->group(f
     Route::get('/', PortfolioIndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', PortfolioStoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{portfolio:key}', PortfolioUpdateController::class)->name('update'); //route('api:v1:category:store');
+});
+ 
+Route::middleware('auth:sanctum')->prefix('enterprise')->as('enterprise')->group(function(){
+    Route::get('/', EnterpriseIndexController::class)->name('index'); //route('api:v1:category:index');
+    Route::get('/store', EnterpriseStoreController::class)->name('store'); //route('api:v1:category:store');
+    Route::get('{enterprise:key}', EnterpriseUpdateController::class)->name('update'); //route('api:v1:category:store');
 });

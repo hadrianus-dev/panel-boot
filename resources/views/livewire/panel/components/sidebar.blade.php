@@ -6,7 +6,7 @@
 				<div class="dropdown header-profile2 ">
 					<a class="nav-link " href="javascript:void(0);"  role="button" data-bs-toggle="dropdown">
 						<div class="header-info2 d-flex align-items-center">
-							<img src="{{asset('base/images/profile/pic1.jpg')}}" alt=""/>
+							<img src="{{asset('base/images/avatar/1.jpg')}}" alt=""/>
 							<div class="d-flex align-items-center sidebar-info">
 								<div>
 									<span class="font-w400 d-block">{{Auth::user()->first_name}}</span>
@@ -30,20 +30,11 @@
 					</div>
 				</div>
 				<ul class="metismenu" id="menu">
-                    <li class="{{ Route::currentRouteName() == 'dashboard' ? 'mm-active' : ''  }}"><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <li class="{{ Route::currentRouteName() == 'dashboard' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow " href="{{route('dashboard')}}" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
-                      {{--   <ul aria-expanded="false">
-							<li><a href="index.html">Dashboard Light</a></li>
-							<li><a href="index-2.html">Dashboard Dark</a></li>
-							<li><a href="jobs-page.html">Jobs</a></li>
-							<li><a href="application-page.html">Application</a></li>
-							<li><a href="my-profile.html">Profile</a></li>
-							<li><a href="statistics-page.html">Statistics</a></li>
-							<li><a href="compaines.html">Companies</a></li>	
-						</ul> --}}
-
                     </li>
 					<li class="{{ Route::currentRouteName() == 'category' ? 'mm-active' : ''  }}">
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -83,6 +74,15 @@
                         <ul aria-expanded="false">
                             <li><a href="{{route('portfolioindex')}}">Gerenciar</a></li>
                             <li><a href="{{route('portfoliostore')}}">Adicionar</a></li>
+                        </ul>
+                    </li>
+					<li class="{{ Route::currentRouteName() == 'post' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-086-star"></i>
+							<span class="nav-text">Empresa</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('enterpriseindex')}}">Visualisar</a></li>
                         </ul>
                     </li>
                     {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

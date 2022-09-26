@@ -36,10 +36,10 @@
         Main wrapper start
         ***********************************-->
     <div id="main-wrapper">
-        @include('Admin.Components.nav-header')
-        @include('Admin.Components.chatbox')
-        @include('Admin.Components.header')
-        @include('Admin.Components.sidebar')
+		<livewire:panel.components.nav-header>
+		<livewire:panel.components.chatbox>
+		<livewire:panel.components.header>
+		<livewire:panel.components.sidebar>
         <!--**********************************
             Content body start
         ***********************************-->
@@ -53,7 +53,7 @@
         <!--**********************************
             End Content body start
         ***********************************-->
-        @include('Admin.Components.footer')
+        <livewire:panel.components.footer>
     </div>
 
 {{-- 	@livewire('panel.category.store-controller') --}}

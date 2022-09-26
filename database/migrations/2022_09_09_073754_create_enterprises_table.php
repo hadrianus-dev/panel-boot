@@ -23,13 +23,20 @@ return new class extends Migration
 
             $table->mediumText('body')->nullable();
             $table->text('description')->nullable();
+            $table->text('slogan')->nullable();
+            $table->text('mission')->nullable();
+            $table->text('vision')->nullable();
+            $table->text('value')->nullable();
+            $table->text('general_email')->nullable();
+            $table->text('comercial_mail')->nullable();
+            $table->text('genearl_phone')->nullable();
+            $table->text('comercial_phone')->nullable();
             $table->text('founder')->nullable();
+
             $table->text('logo')->nullable();
             $table->text('cover')->nullable();
 
             $table->boolean('published')->default(false);
-
-            $table->foreignId('category_id')->index()->constrained()->OnDelete('CASCADE');
             $table->timestamps();
         });
     }
