@@ -15,6 +15,14 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->unique();
+            $table->boolean('normal')->default(false);
+            $table->boolean('member')->default(false);
+            $table->boolean('leader')->default(false);
+            $table->boolean('manager')->default(false);
+            $table->boolean('cummercial')->default(false);
+            $table->foreignId('user_id')->index()->constrained()->OnDelete('CASCADE');
+            $table->boolean('published')->default(true);
             $table->timestamps();
         });
     }
