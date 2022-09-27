@@ -14,9 +14,9 @@ class UserReactor extends Reactor implements ShouldQueue
 {
     public function onUserWasCreated(UserWasCreated $event): void
     {
-        $author = 'David Hadrianus';
+        /* $author = 'David Hadrianus';
         Mail::to('jobs.hadrianus@gmail.com')->send( mailable: new NewUser(
             object: $event->object,
-        ));
+        )); */
     }
 }

@@ -85,6 +85,16 @@
                             <li><a href="{{route('enterpriseindex')}}">Visualisar</a></li>
                         </ul>
                     </li>
+					<li class="{{ Route::currentRouteName() == 'post' ? 'mm-active' : ''  }}">
+                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-043-menu"></i>
+							<span class="nav-text">Utilidadores</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="#">Gerenciar</a></li>
+                            <li><a href="{{route('userstore')}}">Adicionar</a></li>
+                        </ul>
+                    </li>
                     {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
 						<i class="flaticon-050-info"></i>
 							<span class="nav-text">Apps</span>

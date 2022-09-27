@@ -14,7 +14,9 @@ class UserFactory
             first_name: $attributes['first_name'],
             last_name: $attributes['last_name'],
             email: $attributes['email'],
-            password: $attributes['password']
+            password: $attributes['password'],
+            level: (isset($attributes['level'])) ? (int) $attributes['level'] : null,
+            cover: (isset($attributes['cover'])) ? $attributes['cover'] : null
         );
     }
 }

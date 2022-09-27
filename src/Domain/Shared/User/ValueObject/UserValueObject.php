@@ -15,6 +15,8 @@ class UserValueObject
         public string $last_name,
         public string $email,
         public string $password,
+        public null|int $level = null,
+        public null|string $cover = null,
     )
     {}
 
@@ -23,9 +25,11 @@ class UserValueObject
         $mail = new Email(Str::lower($this->email));
         return [
             'first_name' => Str::ucfirst($this->first_name),
-            'last_name' => Str::slug($this->last_name),
+            'last_name' => Str::ucfirst($this->last_name),
             'email' => $mail->value(),
             'password' => Hash::make($this->password),
+            'level' => $this->level,
+            'cover' => $this->cover,
         ];
     }
 }
