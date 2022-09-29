@@ -13,75 +13,61 @@ class UpdateController extends Component
 {
     use LivewireAlert;
     
-    public $categoryData;
+    public $Category;
     public $categoryParent;
     public $parent;
     public $published;
-
-    public $data = [
-        'title',
-        'body',
-        'description',
-        'published',
-        'parent',
-    ];
     
     protected $rules = [
-        'data.title' => [
+        'Category.title' => [
             'required',
             'string',
             'min:3',
             'max:255'
         ],
-        'data.body' => [
+        'Category.body' => [
             'required',
             'string',
             'min:3',
         ],
-        'data.description' => [
+        'Category.description' => [
             'nullable',
             'string',
             'max:120',
         ],
-        'data.parent' => [
+        'Category.parent' => [
             'nullable',
             'integer',
         ],
-        'data.published' => [
+        'Category.published' => [
             'nullable',
             'boolean',
         ],
     ];
 
-    public function mount($category)
+    public function mount(Category $category)
     {
-        $this->categoryData = Category::where('key', $category)->first();
-        #dd($this->categoryData);
-        $this->data = [
-            'title' => $this->categoryData['title'],
-            'body' => $this->categoryData->body,
-            'description' => $this->categoryData->description,
-            'published' => $this->categoryData->published,
-            'parent' => $this->categoryData->parent,
-        ]; 
-        #dd($this->data);
+        $this->Category = $category;
+        #dd($this->Category);
+       
+        #dd($this->Category);
         $this->categoryParent = new Category;
         #$this->categoryParent = $allCategory->where('parent', null)->get();
     }
 
     public function update()
     {
-        #dd($this->data);
-        $this->validate();
-        $this->data['description'] = (isset($this->data['description'])) 
-        ? $this->data['description'] : null;
-        #dd($this->data);
+        #dd($this->Category);
+        $data = $this->validate();
+        $this->Category['description'] = (isset($this->Category['description'])) 
+        ? $this->Category['description'] : null;
+        #dd($data['Category']);
         UpdateCategory::dispatch(
-            Category: $this->categoryData,
-            object: CategoryFactory::create(attributes: $this->data)
+            Category: $this->Category,
+            object: CategoryFactory::create(attributes: (array) $data['Category'])
         );
 
-        $this->categoryData->fresh();
+        #$this->Category->fresh();
         $this->alert('success', 'Sucesso', [
             'text' => 'Operação completamente bem sucedida!',
             'position' => 'center',
@@ -92,13 +78,13 @@ class UpdateController extends Component
     }
 
     public function filterChengeParentById(){
-        $this->data['parent'] = (isset($this->data['parent'])) 
-        ? (int) $this->data['parent'] : null;
+        $this->Category['parent'] = (isset($this->Category['parent'])) 
+        ? (int) $this->Category['parent'] : null;
     }
 
     public function filterChengeStatus(){
-        $this->data['published'] = (isset($this->data['published'])) 
-        ? (int) $this->data['published'] : false;
+        $this->Category['published'] = (isset($this->Category['published'])) 
+        ? (int) $this->Category['published'] : false;
     }
 
     public function render()

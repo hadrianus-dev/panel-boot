@@ -30,9 +30,8 @@
                             </thead>
                             <tbody>
                                 @foreach ($category as $item)
-                               
                                 <tr>
-                                    <td>{{$item['title']}}</td>
+                                    <td>{{$item['title']}} {{$item['published']}}</td>
                                     <td>{{$item->posts()->count()}} Registo(s)</td>
                                     <td><span class="badge light badge-{{($item['published'] === true)? 'success' : 'warning'}}">
                                         {{($item['published'] === true)? 'Publicado' : 'Pendente'}}</span></td>
