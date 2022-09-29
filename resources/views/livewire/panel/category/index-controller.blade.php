@@ -22,7 +22,6 @@
                             <thead>
                                 <tr>
                                     <th>Titulo</th>
-                                    <th>Categoria</th>
                                     <th>Relaciodos</th>
                                     <th>Status</th>
                                     <th>Data</th>
@@ -34,15 +33,14 @@
                                
                                 <tr>
                                     <td>{{$item['title']}}</td>
-                                    <td>Architect</td>
-                                    <td>Male</td>
+                                    <td>{{$item->posts()->count()}} Registo(s)</td>
                                     <td><span class="badge light badge-{{($item['published'] === true)? 'success' : 'warning'}}">
                                         {{($item['published'] === true)? 'Publicado' : 'Pendente'}}</span></td>
                                     <td>{{$item['created_at']->diffForHumans()}}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{route('categoryupdate', $item['key'])}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            <a href="#" wire:click="checkDelete('{{$item['key']}}')" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>												
                                     </td>												
                                 </tr>

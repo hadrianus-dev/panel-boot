@@ -65,7 +65,7 @@ class StoreController extends Component
         ? (int) $data['category']['parent'] : null;
         $data['category']['published'] = (isset($data['category']['published'])) 
         ? (int) $data['category']['published'] : null;
-        dd($data['category']);
+        #dd($data['category']);
         CreateCategory::dispatch(
             object: CategoryFactory::create(attributes: $data['category'])
         );

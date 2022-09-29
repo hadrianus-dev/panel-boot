@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Domain\Post\Models;
 
+use Domain\Shared\Models\User;
+use Domain\Gallery\Models\Gallery;
 use Domain\Category\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Domain\Shared\Models\Concerns\HasSlug;
 use Domain\Post\Models\Builders\PostBuilder;
-use Domain\Shared\Models\User;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,6 +54,15 @@ class Post extends Model
         return $this->belongsTo(
             related: Category::class,
             foreignKey: 'category_id'
+        );
+    }
+
+    
+    public function gallery(): HasMany
+    {
+        return $this->hasMany(
+            related: Gallery::class,
+            foreignKey: 'post_id'
         );
     }
 

@@ -7,15 +7,19 @@ namespace Domain\Category\Models;
 use Illuminate\Database\Eloquent\Model;
 use Domain\Shared\Models\Concerns\HasSlug;
 use Domain\Category\Models\Builders\CategoryBuilder;
+use Domain\Post\Models\Post;
+use Domain\Service\Models\Service;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
     use HasKey;
     use HasSlug;
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'key',
@@ -47,7 +51,15 @@ class Category extends Model
     public function services(): HasMany
     {
         return $this->hasMany(
-            related: Category::class,
+            related: Service::class,
+            foreignKey: 'category_id'
+        );
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(
+            related: Post::class,
             foreignKey: 'category_id'
         );
     }

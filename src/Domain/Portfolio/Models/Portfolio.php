@@ -75,7 +75,7 @@ class Portfolio extends Model
     {
         return $this->hasMany(
             related: Gallery::class,
-            foreignKey: 'id'
+            foreignKey: 'portfolio_id'
         );
     }
 }
