@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PANEL</title>
-
+	
     <!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="base/images/favicon.png" />
 	<link href="{{asset('base/vendor/jquery-nice-select/css/nice-select.css')}}" rel="stylesheet">
@@ -15,8 +15,8 @@
     <link href="{{asset('base/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 	<!-- Style css -->
     <link href="{{asset('base/css/style.css')}}" rel="stylesheet">
-	@include('sweetalert::alert')
     @livewireStyles
+	
 </head>
 <body>
 
@@ -137,6 +137,10 @@
 				}, 1000); 
 			});
 	</script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<x-livewire-alert::scripts />
+	<script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script> 
+	<x-livewire-alert::flash />
     @livewireScripts
 </body>
 </html>

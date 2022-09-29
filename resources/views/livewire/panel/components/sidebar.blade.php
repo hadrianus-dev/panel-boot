@@ -88,11 +88,13 @@
 					<li class="{{ Route::currentRouteName() == 'post' ? 'mm-active' : ''  }}">
                         <a class="has-arrow " href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-043-menu"></i>
-							<span class="nav-text">Utilidadores</span>
+							<span class="nav-text">Outros</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="#">Gerenciar</a></li>
-                            <li><a href="{{route('userstore')}}">Adicionar</a></li>
+                            @if (Auth::user()->level !== 2)
+                            <li><a href="{{route('userindex')}}">Gerenciar Usuários</a></li>
+                            <li><a href="{{route('userstore')}}">Adicionar Usuário</a></li>
+                            @endif
                         </ul>
                     </li>
                     {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

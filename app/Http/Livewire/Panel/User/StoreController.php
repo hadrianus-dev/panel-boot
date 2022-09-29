@@ -6,9 +6,9 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Domain\Shared\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Domain\Shared\User\Jobs\CreateUser;
 use Domain\Shared\User\Factory\UserFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StoreController extends Component
 {
@@ -67,7 +67,9 @@ class StoreController extends Component
         );
 
         $this->ImageUpload();
-
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Usuário deletado do sistema com sucesso!'
+        ]);
         return redirect('user');
     }
 

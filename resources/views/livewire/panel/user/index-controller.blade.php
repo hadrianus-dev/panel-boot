@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($user as $item)   
-                                @if ($item->level != 0)
+                                @if ($item->level !== 0)
                                 <tr>
                                     <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$item['cover'])}}" alt="NULL"></td>
                                     <td>{{$item['first_name']}}</td>
@@ -42,7 +42,7 @@
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{route('userupdate', $item['key'])}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            <a href="#" wire:click="verifyDelete('{{$item['key']}}')" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>												
                                     </td>												
                                 </tr>
