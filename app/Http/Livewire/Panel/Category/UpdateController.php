@@ -7,9 +7,12 @@ use Domain\Category\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Domain\Category\Jobs\UpdateCategory;
 use Domain\Category\Factory\CategoryFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class UpdateController extends Component
 {
+    use LivewireAlert;
+    
     public $categoryData;
     public $categoryParent;
     public $parent;
@@ -79,7 +82,12 @@ class UpdateController extends Component
         );
 
         $this->categoryData->fresh();
-
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         redirect('category');
     }
 

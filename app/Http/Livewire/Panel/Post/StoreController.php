@@ -9,12 +9,13 @@ use Livewire\WithFileUploads;
 use Domain\Post\Jobs\CreatePost;
 use Domain\Category\Models\Category;
 use Domain\Post\Factory\PostFactory;
-use Domain\Shared\Helpers\Upload\UploadImage;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StoreController extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $post;
 
@@ -78,6 +79,12 @@ class StoreController extends Component
             object: PostFactory::create(attributes: $data['post'])
         );
         $this->ImageUpload();
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('post');
     }
 

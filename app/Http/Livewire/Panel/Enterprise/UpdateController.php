@@ -7,15 +7,14 @@ use Illuminate\Support\Str;
 use Domain\Enterprise\Models\Enterprise;
 use Livewire\WithFileUploads;
 use Domain\Enterprise\Jobs\UpdateEnterprise;
-use Illuminate\Support\Facades\DB;
 use Domain\Enterprise\Factory\EnterpriseFactory;
-use Domain\Gallery\Jobs\CreateGallery;
 use Illuminate\Support\Facades\Storage;
-use Domain\Gallery\Factory\GalleryFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class UpdateController extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $enterprise;
 
@@ -130,7 +129,13 @@ class UpdateController extends Component
         if($this->covers):
             $this->coverUpload();
         endif;
-
+        
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('enterprise');
     }
 

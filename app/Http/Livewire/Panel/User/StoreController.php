@@ -13,6 +13,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class StoreController extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $user;
     public $coverFullName;
@@ -66,9 +67,15 @@ class StoreController extends Component
             object: UserFactory::create(attributes: $data['user'])
         );
 
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Cadastro bem sucedido!'
+        ]);
         $this->ImageUpload();
         $this->alert('success', 'Sucesso', [
-            'text' => 'Usuário deletado do sistema com sucesso!'
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
         ]);
         return redirect('user');
     }
@@ -90,6 +97,9 @@ class StoreController extends Component
         ]);
         $mountPathImage = 'images/users';  
         $image['cover']->storeAs('public/'.$mountPathImage, $this->coverFullName);
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Upload de imagem bem sucedido!'
+        ]);
     }
 
     public function render()

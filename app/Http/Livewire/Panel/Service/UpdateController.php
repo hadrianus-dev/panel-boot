@@ -7,9 +7,12 @@ use Domain\Service\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Domain\Service\Jobs\UpdateService;
 use Domain\Service\Factory\ServiceFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class UpdateController extends Component
 {
+    use LivewireAlert;
+    
     public $serviceData;
     public $allCategory;
 
@@ -84,7 +87,12 @@ class UpdateController extends Component
         );
 
         $this->serviceData->fresh();
-
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         redirect('service');
     }
 

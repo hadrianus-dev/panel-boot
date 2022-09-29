@@ -7,9 +7,11 @@ use Domain\Category\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Domain\Category\Jobs\CreateCategory;
 use Domain\Category\Factory\CategoryFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StoreController extends Component
 {
+    use LivewireAlert;
 
     public $category = [
         'title',
@@ -67,7 +69,12 @@ class StoreController extends Component
         CreateCategory::dispatch(
             object: CategoryFactory::create(attributes: $data['category'])
         );
-
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('category');
     }
 

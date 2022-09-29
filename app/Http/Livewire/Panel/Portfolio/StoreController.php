@@ -9,14 +9,15 @@ use Domain\Gallery\Models\Gallery;
 use Domain\Service\Models\Service;
 use Domain\Gallery\Jobs\CreateGallery;
 use Domain\Portfolio\Models\Portfolio;
-use Illuminate\Support\Facades\Storage;
 use Domain\Gallery\Factory\GalleryFactory;
 use Domain\Portfolio\Jobs\CreatePortfolio;
 use Domain\Portfolio\Factory\PortfolioFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StoreController extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $portfolio;
     public $Data;
@@ -99,6 +100,13 @@ class StoreController extends Component
         );
         $this->UploadAtualGallery();
         $this->UploadOldGallery();
+        
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('portfolio');
     }
 

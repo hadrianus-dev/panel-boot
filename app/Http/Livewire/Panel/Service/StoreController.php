@@ -8,9 +8,11 @@ use Domain\Category\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Domain\Service\Jobs\CreateService;
 use Domain\Service\Factory\ServiceFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StoreController extends Component
 {
+    use LivewireAlert;
 
     public $service = [
         'title',
@@ -67,7 +69,12 @@ class StoreController extends Component
         CreateService::dispatch(
             object: ServiceFactory::create(attributes: $data['service'])
         );
-
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('service');
     }
 

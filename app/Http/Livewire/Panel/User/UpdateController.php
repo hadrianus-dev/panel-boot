@@ -67,7 +67,12 @@ class UpdateController extends Component
         if($this->cover):
             $this->ImageUpload();
         endif;
-
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('user');
     }
 

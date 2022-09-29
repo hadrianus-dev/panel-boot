@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Auth;
 use Domain\Gallery\Jobs\CreateGallery;
 use Illuminate\Support\Facades\Storage;
 use Domain\Gallery\Factory\GalleryFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class UpdateController extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $portfolio;
 
@@ -104,6 +106,12 @@ class UpdateController extends Component
         if($this->covers):
             $this->UploadOldGallery();
         endif;
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('portfolio');
     }
 

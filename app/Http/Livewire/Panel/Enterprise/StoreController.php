@@ -8,10 +8,12 @@ use Domain\Enterprise\Models\Enterprise;
 use Livewire\WithFileUploads;
 use Domain\Enterprise\Jobs\CreateEnterprise;
 use Domain\Enterprise\Factory\EnterpriseFactory;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StoreController extends Component
 {
     use WithFileUploads;
+    use LivewireAlert;
 
     public $enterprise;
 
@@ -114,6 +116,12 @@ class StoreController extends Component
         if($this->covers):
             $this->coverUpload();
         endif;
+        $this->alert('success', 'Sucesso', [
+            'text' => 'Operação completamente bem sucedida!',
+            'position' => 'center',
+            'toast' => false,
+            'timerProgressBar' => true,
+        ]);
         return redirect('enterprise');
     }
 

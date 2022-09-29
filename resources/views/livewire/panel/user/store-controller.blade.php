@@ -60,7 +60,7 @@
                                         <div class="col-lg-10">
                                             <select wire:model='user.level' class="default-select wide form-control" id="validationCustom05">
                                                 <option  data-display="Selecionar">Selecionar</option>
-                                                <option value="0">Colaborador</option>
+                                                <option value="2">Colaborador</option>
                                                 <option value="1">Administrador</option>
                                             </select>
                                             @error('user.level') <span class="invalid-feedback">{{ $message }}</span>@enderror

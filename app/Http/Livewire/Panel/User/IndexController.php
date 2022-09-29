@@ -42,6 +42,7 @@ class IndexController extends Component
                 'text' => 'Você não tem permissão para executar esta ação. Obrigado!',
                 'position' => 'center',
                 'toast' => false,
+                'timerProgressBar' => true,
             ]);
         endif;
     }
@@ -58,12 +59,14 @@ class IndexController extends Component
                 'position' => 'center',
                 'toast' => false,
                 'timer' => 10000,
+                'timerProgressBar' => true,
             ]);
         }else{
             $this->userByKey->delete();
             $this->user->fresh();
             $this->alert('success', 'Sucesso', [
-                'text' => 'Usuário deletado do sistema com sucesso!'
+                'text' => 'Usuário deletado do sistema com sucesso!',
+                'timerProgressBar' => true,
             ]);
         }
     }
