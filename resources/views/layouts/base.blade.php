@@ -85,6 +85,7 @@
 	
     <script src="{{asset('base/js/custom.min.js')}}"></script>
 	<script src="{{asset('base/js/dlabnav-init.js')}}"></script>
+	<script src="{{asset('base/vendor/ckeditor/ckeditor.js')}}"></script>
 	<script src="{{asset('base/js/demo.js')}}"></script>
     <script src="{{asset('base/js/styleSwitcher.js')}}"></script>
 	<script>

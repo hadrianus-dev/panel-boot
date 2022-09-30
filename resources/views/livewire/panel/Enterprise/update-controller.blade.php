@@ -48,6 +48,9 @@
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição Completa</label>
                                         <div class="col-lg-10">
+                                            {{-- <div class="card-body custom-ekeditor">
+                                                <div id="ckeditor"></div>
+                                            </div> --}}
                                             <textarea wire:model='enterprise.description' class="form-control" rows="12" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('enterprise.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                         </div>

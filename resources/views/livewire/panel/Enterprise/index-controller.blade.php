@@ -96,7 +96,9 @@
                         <h3 class="mb-2 text-black">Historial</h3>
                        
                         <img src="{{asset('storage/'. $enterprise['cover'])}}" alt="" class="img-fluid mb-3 w-100 rounded">
+                        <x-markdown>
                         {{ $enterprise->description }}
+                        </x-markdown>
                         <div class="profile-skills mt-5 mb-5">
                             <h4 class="text-primary mb-2">Skills</h4>
                             @foreach ($services as $item)
