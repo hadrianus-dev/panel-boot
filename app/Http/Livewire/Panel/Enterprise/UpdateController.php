@@ -115,7 +115,7 @@ class UpdateController extends Component
         if($this->cover):
             $data['enterprise']['logo'] = $this->setNameLogo($data);
         else:
-            $data['enterprise']['logo'] = $this->enterprise->cover;
+            $data['enterprise']['logo'] = $this->enterprise->logo;
         endif;
 
         UpdateEnterprise::dispatch(

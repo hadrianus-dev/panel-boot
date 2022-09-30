@@ -30,7 +30,7 @@ class Enterprise extends Model
         'vision',
         'value',
         'general_email',
-        'comercial_mail',
+        'comercial_email',
         'general_phone',
         'comercial_phone',
         'founder',
