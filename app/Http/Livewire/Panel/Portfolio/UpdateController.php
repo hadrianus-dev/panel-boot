@@ -47,17 +47,14 @@ class UpdateController extends Component
         'portfolio.description' => [
             'nullable',
             'string',
-            'max:120',
         ],
         'portfolio.date_start' => [
             'nullable',
             'date',
-            'max:120',
         ],
         'portfolio.date_finish' => [
             'nullable',
             'date',
-            'max:120',
         ],
         'portfolio.service_id' => [
             'nullable',
@@ -95,23 +92,26 @@ class UpdateController extends Component
     public function update()
     {
         $data = $this->validate();
-        #dd($data);
+        #dd($data['portfolio']);
         UpdatePortfolio::dispatch(
             Portfolio: $this->portfolio,
             object: PortfolioFactory::create(attributes: $data['portfolio'])
         );
+
         if($this->cover):
             $this->UploadAtualGallery();
         endif;
         if($this->covers):
             $this->UploadOldGallery();
         endif;
+
         $this->alert('success', 'Sucesso', [
             'text' => 'Operação completamente bem sucedida!',
             'position' => 'center',
             'toast' => false,
             'timerProgressBar' => true,
         ]);
+
         return redirect('portfolio');
     }
 

@@ -45,17 +45,15 @@ class StoreController extends Component
         'portfolio.description' => [
             'nullable',
             'string',
-            'max:120',
+            'min:3',
         ],
         'portfolio.date_start' => [
             'required',
             'date',
-            'max:120',
         ],
         'portfolio.date_finish' => [
             'nullable',
             'date',
-            'max:120',
         ],
         'portfolio.service_id' => [
             'required',
@@ -92,14 +90,19 @@ class StoreController extends Component
     public function submit()
     {
         $data = $this->validate();
-
+        #dd($data['portfolio']);
         $this->Data = $data['portfolio'];
 
         CreatePortfolio::dispatch(
             object: PortfolioFactory::create(attributes: $this->Data)
         );
+        
+        if($this->cover):
         $this->UploadAtualGallery();
+        endif;
+        if($this->covers):
         $this->UploadOldGallery();
+        endif;
         
         $this->alert('success', 'Sucesso', [
             'text' => 'Operação completamente bem sucedida!',
@@ -107,6 +110,7 @@ class StoreController extends Component
             'toast' => false,
             'timerProgressBar' => true,
         ]);
+
         return redirect('portfolio');
     }
 
@@ -152,11 +156,11 @@ class StoreController extends Component
     {
         $data = [
             'published' => true,
-            'portfolio_id' => $this->portfolio['id'],
+            'portfolio_id' => (int) $this->portfolio::where('slug', Str::slug($this->Data['title']))->first()['id'],
             'status' => $status,
             'cover' => $path
         ];
-
+        #dd($data);
         CreateGallery::dispatch(
             GalleryFactory::create($data)
         );

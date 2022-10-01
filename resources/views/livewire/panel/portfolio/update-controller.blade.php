@@ -96,8 +96,8 @@
                                         <div class="col-lg-10">
                                             <select wire:model='portfolio.published' class="default-select wide form-control" id="validationCustom05">
                                                 <option  data-display="Selecionar">Selecionar</option>
-                                                <option value="1">Publicar</option>
-                                                <option value="0">Rascunho</option>
+                                                <option value="1" >Publicar</option>
+                                                <option value="0" >Rascunho</option>
                                             </select>
                                             @error('portfolio.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">

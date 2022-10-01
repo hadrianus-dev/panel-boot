@@ -1,7 +1,7 @@
 <div>
 	<div class="row page-titles">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="javascript:void(0)">Categoria</a></li>
+			<li class="breadcrumb-item active"><a href="javascript:void(0)">Serviços</a></li>
 			<li class="breadcrumb-item"><a href="javascript:void(0)">Editar</a></li>
 		</ol>
     </div>
@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">{{$data['title']}}</h4>
+                    <h4 class="card-title">{{$Service['title']}}</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
@@ -22,8 +22,8 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='data.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
-                                            @error('data.title') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model='Service.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            @error('Service.title') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria
                                             </div>
@@ -34,8 +34,8 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='data.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
-                                            @error('data.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            <textarea wire:model='Service.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
+                                            @error('Service.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, precisa inserir uma breve Ddescrição
                                             </div>
@@ -44,8 +44,8 @@
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição Completa</label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='data.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
-                                            @error('data.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            <textarea wire:model='Service.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            @error('Service.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, precisa inserir uma breve Ddescrição
                                             </div>
@@ -56,17 +56,17 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <select wire:model='data.category_id' wire:change="filterChengeServiceById" class="default-select wide form-control" id="validationCustom05">
-                                                <option  data-display="Selecionar">Selecionar</option>
-                                                @foreach ($allCategory->where('published', true)->get() as $item)
-                                                @if ($item->id == $serviceData['category_id'])
+                                            <select wire:model='Service.category_id' wire:change="filterChengeServiceById" class="default-select wide form-control" id="validationCustom05">
+                                                <option  Service-display="Selecionar">Selecionar</option>
+                                                @foreach ($allCategory as $item)
+                                                @if ($item->id == $Service['category_id'])
                                                 <option selected value="{{$item->id}}" wire:key="{{ $item->id}}">{{$item->title}}</option>
                                                 @else
                                                 <option value="{{$item->id}}" wire:key="{{ $item->id}}">{{$item->title}}</option>
                                                 @endif 
                                                 @endforeach
                                             </select>
-                                            @error('data.category_id') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            @error('Service.category_id') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Please select a one.
                                             </div>
@@ -77,12 +77,12 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <select wire:model='data.published' wire:change="filterChengeStatus" class="default-select wide form-control" id="validationCustom05">
-                                                <option  data-display="{{($serviceData['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
+                                            <select wire:model='Service.published' wire:change="filterChengeStatus" class="default-select wide form-control" id="validationCustom05">
+                                                <option  Service-display="{{($Service['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
                                                 <option value='1'>Publicar</option>
                                                 <option value='0'>Rascunho</option>
                                             </select>
-                                            @error('data.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            @error('Service.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Please select a one.
                                             </div>

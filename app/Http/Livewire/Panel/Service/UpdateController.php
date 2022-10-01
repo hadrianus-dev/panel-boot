@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Panel\Service;
 
+use Domain\Category\Models\Category;
 use Livewire\Component;
 use Domain\Service\Models\Service;
 use Illuminate\Support\Facades\Auth;
@@ -13,39 +14,31 @@ class UpdateController extends Component
 {
     use LivewireAlert;
     
-    public $serviceData;
+    public $Service;
     public $allCategory;
-
-    public $data = [
-        'title',
-        'body',
-        'description',
-        'published',
-        'category_id'
-    ];
     
     protected $rules = [
-        'data.title' => [
+        'Service.title' => [
             'required',
             'string',
             'min:3',
-            'max:255'
+            'max:255',
         ],
-        'data.body' => [
+        'Service.body' => [
             'required',
             'string',
             'min:3',
         ],
-        'data.description' => [
+        'Service.description' => [
             'nullable',
             'string',
-            'max:120',
+            'min:5',
         ],
-        'data.category_id' => [
+        'Service.category_id' => [
             'nullable',
             'integer',
         ],
-        'data.published' => [
+        'Service.published' => [
             'nullable',
             'boolean',
         ],
@@ -53,40 +46,31 @@ class UpdateController extends Component
 
     protected $listeners = ['catEdit'];
 
-    public function catEdit($id){
-        dd($id);
-    }
-
-    public function mount($service)
+    public function mount(Service $service)
     {
-        $this->serviceData = Service::where('key', $service)->first();
-        #dd($this->serviceData);
-        $this->data = [
-            'title' => $this->serviceData['title'],
-            'body' => $this->serviceData->body,
-            'description' => $this->serviceData->description,
-        ]; 
-        #dd($this->data);
-        $this->allCategory = new Service;
+        $this->Service = $service;
+        #dd($this->Service);
+        $this->allCategory = Category::where('published', true)->get();
     }
 
     public function update()
     {
-        $this->validate();
-        #dd($this->data);
-        $this->data['description'] = (isset($this->data['description'])) 
-        ? $this->data['description'] : null;
-        $this->data['category_id'] = (isset($this->data['category_id'])) 
-        ? (int) $this->data['category_id'] : null;
-        $this->data['published'] = (isset($this->data['published'])) 
-        ? (int) $this->data['published'] : false;
-        #dd($this->data);
+        $data = $this->validate()['Service'];
+        #dd($this->Service);
+        $data['description'] = (isset($data['description'])) 
+        ? $data['description'] : null;
+        $data['category_id'] = (isset($data['category_id'])) 
+        ? (int) $data['category_id'] : $this->Service->category_id;
+        $data['published'] = (isset($data['published'])) 
+        ? (bool) $data['published'] : $this->Service->published;
+
+        #dd($data);
+        
         UpdateService::dispatch(
-            Service: $this->serviceData,
-            object: ServiceFactory::create(attributes: $this->data)
+            Service: $this->Service,
+            object: ServiceFactory::create(attributes: $data)
         );
 
-        $this->serviceData->fresh();
         $this->alert('success', 'Sucesso', [
             'text' => 'Operação completamente bem sucedida!',
             'position' => 'center',
@@ -97,13 +81,13 @@ class UpdateController extends Component
     }
 
     public function filterChengeServiceById(){
-        /* $this->data['category_id'] = (isset($this->data['parent'])) 
-        ? (int) $this->data['category_id'] : null; */
+        /* $this->Service['category_id'] = (isset($this->Service['parent'])) 
+        ? (int) $this->Service['category_id'] : null; */
     }
 
     public function filterChengeStatus(){
-        $this->data['published'] = (isset($this->data['published'])) 
-        ? (int) $this->data['published'] : false;
+        $this->Service['published'] = (isset($this->Service['published'])) 
+        ? (int) $this->Service['published'] : false;
     }
 
 
