@@ -95,6 +95,7 @@
                             <li><a href="{{route('userindex')}}">Gerenciar Usuários</a></li>
                             <li><a href="{{route('userstore')}}">Adicionar Usuário</a></li>
                             @endif
+                            <li><a href="{{route('teamindex')}}">Gerenciar Team</a></li>
                         </ul>
                     </li>
                     {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">

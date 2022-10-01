@@ -18,6 +18,9 @@ use App\Http\Livewire\Panel\Post\UpdateController as PostUpdateController;
 use App\Http\Livewire\Panel\Service\IndexController as ServiceIndexController;
 use App\Http\Livewire\Panel\Service\StoreController as ServiceStoreController;
 use App\Http\Livewire\Panel\Service\UpdateController as ServiceUpdateController;
+use App\Http\Livewire\Panel\Team\IndexController as TeamIndexController;
+use App\Http\Livewire\Panel\Team\StoreController as TeamStoreController;
+use App\Http\Livewire\Panel\Team\UpdateController as TeamUpdateController;
 use App\Http\Livewire\Panel\User\IndexController as UserIndexController;
 use App\Http\Livewire\Panel\User\StoreController as UserStoreController;
 use App\Http\Livewire\Panel\User\UpdateController as UserUpdateController;
@@ -88,4 +91,10 @@ Route::middleware('auth:sanctum')->prefix('enterprise')->as('enterprise')->group
     Route::get('/', EnterpriseIndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', EnterpriseStoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{enterprise:key}', EnterpriseUpdateController::class)->name('update'); //route('api:v1:category:store');
+});
+
+Route::middleware('auth:sanctum')->prefix('team')->as('team')->group(function(){
+    Route::get('/', TeamIndexController::class)->name('index'); //route('api:v1:category:index');
+    Route::get('/store', TeamStoreController::class)->name('store'); //route('api:v1:category:store');
+    Route::get('{team:key}', TeamUpdateController::class)->name('update'); //route('api:v1:category:store');
 });
