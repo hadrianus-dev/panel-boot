@@ -7,6 +7,7 @@ use App\Http\Livewire\Panel\Category\StoreController;
 use App\Http\Livewire\Panel\Category\UpdateController;
 use App\Http\Livewire\Panel\Dashboard\DashboardController;
 use App\Http\Livewire\Panel\Enterprise\IndexController as EnterpriseIndexController;
+use App\Http\Livewire\Panel\Enterprise\PartnerController;
 use App\Http\Livewire\Panel\Enterprise\StoreController as EnterpriseStoreController;
 use App\Http\Livewire\Panel\Enterprise\UpdateController as EnterpriseUpdateController;
 use App\Http\Livewire\Panel\Portfolio\IndexController as PortfolioIndexController;
@@ -91,6 +92,10 @@ Route::middleware('auth:sanctum')->prefix('enterprise')->as('enterprise')->group
     Route::get('/', EnterpriseIndexController::class)->name('index'); //route('api:v1:category:index');
     Route::get('/store', EnterpriseStoreController::class)->name('store'); //route('api:v1:category:store');
     Route::get('{enterprise:key}', EnterpriseUpdateController::class)->name('update'); //route('api:v1:category:store');
+});
+ 
+Route::middleware('auth:sanctum')->prefix('partner')->as('partner')->group(function(){
+    Route::get('/', PartnerController::class)->name('index'); //route('api:v1:category:store');
 });
 
 Route::middleware('auth:sanctum')->prefix('team')->as('team')->group(function(){

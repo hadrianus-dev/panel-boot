@@ -7,13 +7,15 @@ use Domain\Service\Models\Service;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use Domain\Enterprise\Models\Enterprise;
+use Domain\Partner\Models\Partner;
 
 class IndexController extends Component
 {
     public $enterprise = [];
     public $services;
+    public $partner;
 
-    public function mount()
+    public function mount(Partner $partner)
     {
         $enterprise = QueryBuilder::for(
             subject: Enterprise::class,
@@ -24,6 +26,7 @@ class IndexController extends Component
             ]
         )->first();
 
+        $this->partner = $partner::all();
         $this->services = Service::where('published', true)->get();
         
         $this->enterprise = $enterprise;

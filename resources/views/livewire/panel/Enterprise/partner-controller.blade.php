@@ -1,7 +1,7 @@
 <div>
 	<div class="row page-titles">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="javascript:void(0)">Equipe</a></li>
+			<li class="breadcrumb-item active"><a href="javascript:void(0)">Parceiros</a></li>
 			<li class="breadcrumb-item"><a href="javascript:void(0)">Novo</a></li>
 		</ol>
     </div>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
-                        <form wire:submit.prevent='submit' class="needs-validation" enctype="multipart/form-data" method="team" novalidate >
+                        <form wire:submit.prevent='submit' class="needs-validation" enctype="multipart/form-data" method="partner" novalidate >
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12">
@@ -23,74 +23,32 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='team.full_name' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
-                                            @error('team.full_name') <span class="text-danger error">{{ $message }}</span>@enderror
+                                            <input wire:model='partner.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            @error('partner.title') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-2 col-form-label" for="validationCustom01">Email & Telefone
-                                            <span class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-5">
-                                            <input wire:model='team.email' type="text" class="form-control" id="validationCustom01"  placeholder="Insira um email" required>
-                                            @error('team.email') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, informe um titulo para esta categoria
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-lg-5">
-                                            <input wire:model='team.phone_number' type="text" class="form-control" id="validationCustom01"  placeholder="Telefone" required>
-                                            @error('team.phone_number') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, informe um titulo para esta categoria
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-2 col-form-label" for="validationCustom04">Cargo <span
-                                                class="text-danger">*</span>
-                                        </label>
-                                        <div class="col-lg-10">
-                                            <input wire:model='team.responsability' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required>
-                                            @error('team.responsability') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, precisa inserir uma breve Ddescrição
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição</label>
-                                        <div class="col-lg-10">
-                                            <textarea wire:model='team.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
-                                            @error('team.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, precisa inserir uma breve Ddescrição
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                                   
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom05">Status
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <select wire:model='team.published' class="default-select wide form-control" id="validationCustom05">
+                                            <select wire:model='partner.published' class="default-select wide form-control" id="validationCustom05">
                                                 <option  data-display="Selecionar">Selecionar</option>
                                                 <option value="1">Publicar</option>
                                                 <option value="0">Rascunho</option>
                                             </select>
-                                            @error('team.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            @error('partner.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Please select a one.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-lg-2 col-form-label" for="validationCustom05">Capa & Imagens adicionais
+                                        <label class="col-lg-2 col-form-label" for="validationCustom05">logomarca
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-5">

@@ -31,6 +31,9 @@
                                     <a href="{{ route('enterpriseupdate', $enterprise->key) }}">
                                         <li class="dropdown-item"><i class="fa fa-edit text-primary me-2"></i>Editar Agora</li>
                                     </a>
+                                    <a href="{{ route('partnerindex') }}">
+                                        <li class="dropdown-item"><i class="fa fa-handshake text-primary me-2"></i>Adicionar Parceiro</li>
+                                    </a>
                                 </ul>
                             </div>
                         </div>
@@ -42,6 +45,23 @@
     <div class="row">
         <div class="col-xl-4">
             <div class="row">
+
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile-interest">
+                                <h5 class="text-primary d-inline">Parceiros</h5>
+                                <div class="row mt-4 sp4" id="lightgallery">
+                                    @foreach ($partner as $item)
+                                    <a href="{{asset('storage/'. $item->cover)}}" data-exthumbimage="{{asset('storage/'. $item->cover)}}" data-src="{{asset('storage/'. $item->cover)}}" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
+                                        <img src="{{asset('storage/'. $item->cover)}}" alt="" class="img-fluid">
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                
                 <div class="col-xl-12">
                     <div class="card">

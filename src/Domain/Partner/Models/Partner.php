@@ -21,6 +21,7 @@ class Partner extends Model
         'title',
         'slug',
         'published',
+        'cover',
     ];
 
     protected $casts = [
