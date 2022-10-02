@@ -53,7 +53,7 @@
                                 <h5 class="text-primary d-inline">Parceiros</h5>
                                 <div class="row mt-4 sp4" id="lightgallery">
                                     @foreach ($partner as $item)
-                                    <a href="{{asset('storage/'. $item->cover)}}" data-exthumbimage="{{asset('storage/'. $item->cover)}}" data-src="{{asset('storage/'. $item->cover)}}" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
+                                    <a href="{{asset('storage/'. $item->cover)}}" dlata-exthumbimage="{{asset('storage/'. $item->cover)}}" data-src="{{asset('storage/'. $item->cover)}}" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-6">
                                         <img src="{{asset('storage/'. $item->cover)}}" alt="" class="img-fluid">
                                     </a>
                                     @endforeach

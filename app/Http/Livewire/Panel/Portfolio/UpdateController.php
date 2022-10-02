@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Panel\Portfolio;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Domain\Portfolio\Models\Portfolio;
@@ -92,7 +93,7 @@ class UpdateController extends Component
     public function update()
     {
         $data = $this->validate();
-        #dd($data['portfolio']);
+        #dd(date($data['portfolio']['date_start']));
         UpdatePortfolio::dispatch(
             Portfolio: $this->portfolio,
             object: PortfolioFactory::create(attributes: $data['portfolio'])

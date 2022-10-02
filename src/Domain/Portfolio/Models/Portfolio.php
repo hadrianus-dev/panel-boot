@@ -27,6 +27,8 @@ class Portfolio extends Model
         'slug',
         'body',
         'description',
+        'date_start',
+        'date_finish',
         'published',
         'service_id'
     ];
