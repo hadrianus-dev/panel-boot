@@ -11,25 +11,16 @@ use Domain\Partner\Models\Partner;
 
 class IndexController extends Component
 {
-    public $enterprise = [];
+    public $enterprise;
     public $services;
     public $partner;
 
-    public function mount(Partner $partner)
+    public function mount(Enterprise $enterprise,Partner $partner)
     {
-        $enterprise = QueryBuilder::for(
-            subject: Enterprise::class,
-        )->allowedFilters(
-            [
-                AllowedFilter::scope('published'),
-                AllowedFilter::scope('draft'),
-            ]
-        )->first();
-
         $this->partner = $partner::all();
         $this->services = Service::where('published', true)->get();
         
-        $this->enterprise = $enterprise;
+        $this->enterprise = $enterprise->first();
         #dd($this->enterprise);
     }
 
