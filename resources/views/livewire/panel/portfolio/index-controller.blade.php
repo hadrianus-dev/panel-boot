@@ -1,7 +1,7 @@
 <div>
     <div class="row page-titles">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Postagem</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Portifólio</a></li>
             <li class="breadcrumb-item"><a href="javascript:void(0)">Lisrtagem</a></li>
         </ol>
     </div>
@@ -10,11 +10,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Todas as Postagens</h4>
-                    <button type="button" class="btn btn-primary" 
-                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Adicionar Novo<span
+                    <h4 class="card-title">Todas os Portifólio</h4>
+                    <a href="{{route('portfoliostore')}}" class="btn btn-primary">Adicionar Novo<span
                         class="btn-icon-end"><i class="fa fa-plus"></i></span>
-                    </button>
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -24,7 +23,7 @@
                                     {{-- <th></th> --}}
                                     <th>Titulo</th>
                                     <th>Serviço</th>
-                                    <th>Relaciodos</th>
+                                    <th>Relacionados</th>
                                     <th>Status</th>
                                     <th>Data</th>
                                     <th>Action</th>

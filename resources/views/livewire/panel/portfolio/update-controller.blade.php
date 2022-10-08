@@ -1,7 +1,7 @@
 <div>
 	<div class="row page-titles">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="javascript:void(0)">Portifolio</a></li>
+			<li class="breadcrumb-item active"><a href="javascript:void(0)">Portifólio</a></li>
 			<li class="breadcrumb-item"><a href="javascript:void(0)">Editar</a></li>
 		</ol>
     </div>

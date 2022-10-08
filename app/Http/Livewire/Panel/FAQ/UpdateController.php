@@ -41,9 +41,9 @@ class UpdateController extends Component
         ],
     ];
 
-    public function mount(FAQ $FAQ, Service $service): void
+    public function mount(FAQ $faq, Service $service): void
     {
-        $this->FAQ = $FAQ;
+        $this->FAQ = $faq;
         #dd($this->FAQ);
         $this->services = $service::orderBy('created_at', 'desc')->get();
     }

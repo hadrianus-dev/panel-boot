@@ -1,7 +1,7 @@
 <div>
 	<div class="row page-titles">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="javascript:void(0)">Categoria</a></li>
+			<li class="breadcrumb-item active"><a href="javascript:void(0)">Postagens</a></li>
 			<li class="breadcrumb-item"><a href="javascript:void(0)">Novo</a></li>
 		</ol>
     </div>
@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Form Validation</h4>
+                    <h4 class="card-title">Formulário</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
