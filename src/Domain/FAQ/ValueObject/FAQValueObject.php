@@ -20,7 +20,7 @@ class FAQValueObject
     public function toArray(): array
     {
         return [
-            'title' => Str::ucfirst($this->question),
+            'question' => Str::ucfirst($this->question),
             'response' => $this->response,
             'published' => $this->published,
             'service_id' => $this->service_id,

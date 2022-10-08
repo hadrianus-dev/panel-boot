@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Domain\Service\Models;
 
 use Domain\Category\Models\Category;
+use Domain\FAQ\Models\FAQ;
 use Domain\Portfolio\Models\Portfolio;
 use Illuminate\Database\Eloquent\Model;
 use Domain\Shared\Models\Concerns\HasSlug;
@@ -58,6 +59,14 @@ class Service extends Model
     {
         return $this->hasMany(
             related: Portfolio::class,
+            foreignKey: 'service_id'
+        );
+    }
+
+    public function FAQ(): HasMany
+    {
+        return $this->hasMany(
+            related: FAQ::class,
             foreignKey: 'service_id'
         );
     }
