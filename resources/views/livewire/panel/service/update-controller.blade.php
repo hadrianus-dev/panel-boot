@@ -22,11 +22,9 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='Service.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            <input wire:model='Service.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo" required>
                                             @error('Service.title') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, informe um titulo para esta categoria
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -34,11 +32,9 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='Service.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
+                                            <textarea wire:model='Service.body' class="form-control" id="validationCustom04"  rows="20" placeholder="Insira uma descrição" required></textarea>
                                             @error('Service.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, precisa inserir uma breve Ddescrição
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">

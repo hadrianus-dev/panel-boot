@@ -1,7 +1,7 @@
 <div>
 	<div class="row page-titles">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="javascript:void(0)">Categoria</a></li>
+			<li class="breadcrumb-item active"><a href="javascript:void(0)">Serviço</a></li>
 			<li class="breadcrumb-item"><a href="javascript:void(0)">Novo</a></li>
 		</ol>
     </div>
@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Form Validation</h4>
+                    <h4 class="card-title">Formulário</h4>
                 </div>
                 <div class="card-body">
                     <div class="form-validation">
@@ -22,11 +22,9 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='service.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            <input wire:model='service.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo" required>
                                             @error('service.title') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, informe um titulo para esta categoria
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -36,9 +34,7 @@
                                         <div class="col-lg-10">
                                             <textarea wire:model='service.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
                                             @error('service.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Por favor, precisa inserir uma breve Ddescrição
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -52,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-lg-2 col-form-label" for="validationCustom05">Categoria Pai
+                                        <label class="col-lg-2 col-form-label" for="validationCustom05">Categoria
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">

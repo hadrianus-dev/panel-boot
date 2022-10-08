@@ -100,9 +100,7 @@
                                                 <option value="0">Rascunho</option>
                                             </select>
                                             @error('portfolio.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            <div class="invalid-feedback">
-                                                Please select a one.
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
