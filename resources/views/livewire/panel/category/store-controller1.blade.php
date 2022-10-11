@@ -17,7 +17,7 @@
                                         <span class="text-danger">*</span>
                                     </label>
                                     <div class="col-lg-10">
-                                        <input wire:model='category.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                        <input wire:model='category.title' type="text" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                         @error('category.title') <span class="text-danger error">{{ $message }}</span>@enderror
                                         <div class="invalid-feedback">
                                             Por favor, informe um titulo para esta categoria

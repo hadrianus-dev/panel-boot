@@ -25,7 +25,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('date_start')->nullable();
             $table->date('date_finish')->nullable();
-
+            $table->text('local')->nullable();
+            $table->text('client')->nullable();
+            
+            $table->text('cover')->nullable();
             $table->boolean('published')->default(false);
 
             $table->foreignId('service_id')->index()->constrained()->OnDelete('CASCADE');

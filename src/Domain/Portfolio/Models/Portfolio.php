@@ -29,6 +29,9 @@ class Portfolio extends Model
         'description',
         'date_start',
         'date_finish',
+        'local',
+        'client',
+        'cover',
         'published',
         'service_id'
     ];

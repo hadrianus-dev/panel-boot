@@ -23,7 +23,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='post.title' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            <input wire:model='post.title' type="text" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                             @error('post.title') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria
@@ -90,7 +90,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-5">
-                                            <input type="file" wire:model='cover' class="form-control" placeholder="Tirulo da categoria" required>
+                                            <input type="file" wire:model='cover' class="form-control" placeholder="Titulo" required>
                                             @error('cover') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria
@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-5">
-                                            <input type="file" multiple wire:model='covers' class="form-control" placeholder="Tirulo da categoria" required>
+                                            <input type="file" multiple wire:model='covers' class="form-control" placeholder="Titulo" required>
                                             @error('covers') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria

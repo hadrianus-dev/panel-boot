@@ -25,6 +25,7 @@ class StoreController extends Component
     public $gallery;
     public $services;
 
+    public $image;
     public $cover = [];
     public $covers = [];
     private $coverFullName;
@@ -55,6 +56,14 @@ class StoreController extends Component
             'nullable',
             'date',
         ],
+        'portfolio.client' => [
+            'nullable',
+            'string',
+        ],
+        'portfolio.local' => [
+            'nullable',
+            'string',
+        ],
         'portfolio.service_id' => [
             'required',
             'integer',
@@ -71,6 +80,10 @@ class StoreController extends Component
             'nullable',
             'array',
         ],
+        'image' => [
+            'nullable',
+            'image',
+        ],
     ];
 
     public function mount(Service $service, Gallery $gallery, Portfolio $portfolios)
@@ -84,14 +97,20 @@ class StoreController extends Component
     private function newDate($date)
     {
         $time = strtotime($date);
-        return date('Y-m-d',$time);
+        return date('Y-m-d', $time);
     }
 
     public function submit()
     {
-        $data = $this->validate();
+        $data = $this->validate()['portfolio'];
         #dd($data['portfolio']);
-        $this->Data = $data['portfolio'];
+        $this->Data = $data;
+
+        if($this->image){
+            $this->Data['cover'] = $this->setNameCover($data);
+            dd($this->Data['cover']);
+            $this->ImageUpload();
+        }
 
         CreatePortfolio::dispatch(
             object: PortfolioFactory::create(attributes: $this->Data)
@@ -112,6 +131,25 @@ class StoreController extends Component
         ]);
 
         return redirect('portfolio');
+    }
+
+    private function setNameCover($data): string
+    {
+        $getExtension = $this->image->getClientOriginalExtension(); 
+        $ImageFullName = Str::slug($data['title']) .'-'. uniqid().'.'. $getExtension;
+        $mountPathImage = 'images/portfolios';  
+        $theImagePath = $mountPathImage.'/'.$ImageFullName;
+        $this->coverFullName = $ImageFullName;
+        return $theImagePath;
+    }
+
+    public function ImageUpload(): void
+    {
+        $image = $this->validate([
+            'image' => 'image|required'
+        ]);
+        $mountPathImage = 'images/portfolios';  
+        $image['cover']->storeAs('public/'.$mountPathImage, $this->coverFullName);
     }
 
     public function UploadAtualGallery(): void

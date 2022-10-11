@@ -17,6 +17,9 @@ class PortfolioFactory
             date_start: $attributes['date_start'],
             date_finish: $attributes['date_finish'],
             service_id: (isset($attributes['service_id'])) ? (int) $attributes['service_id'] : null, 
+            local: $attributes['local'], 
+            client: $attributes['client'], 
+            cover: $attributes['cover'], 
             published: $attributes['published'], 
         );
     }

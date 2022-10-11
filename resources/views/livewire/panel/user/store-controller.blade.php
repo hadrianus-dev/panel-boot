@@ -23,7 +23,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='user.first_name' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            <input wire:model='user.first_name' type="text" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                             @error('user.first_name') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo
@@ -35,7 +35,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input wire:model='user.last_name' type="text" class="form-control" id="validationCustom01"  placeholder="Tirulo da categoria" required>
+                                            <input wire:model='user.last_name' type="text" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                             @error('user.last_name') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo
@@ -74,7 +74,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <input type="file" wire:model='cover' class="form-control" placeholder="Tirulo da categoria" required>
+                                            <input type="file" wire:model='cover' class="form-control" placeholder="Titulo" required>
                                             @error('cover') <span class="text-danger error">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, informe um titulo para esta categoria

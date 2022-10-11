@@ -15,6 +15,9 @@ class PortfolioValueObject
         public null|string $description = null,
         public null|string $date_start = null,
         public null|string $date_finish = null,
+        public null|string $local = null,
+        public null|string $client = null,
+        public null|string $cover = null,
         public null|bool $published = false,
         public int $service_id
     )
@@ -29,6 +32,9 @@ class PortfolioValueObject
             'description' => Str::ucfirst($this->description),
             'date_start' => Carbon::parse($this->date_start)->format('Y-m-d'),
             'date_finish' => Carbon::parse($this->date_finish)->format('Y-m-d'),
+            'local' => $this->local,
+            'client' => $this->client,
+            'cover' => $this->cover,
             'published' => $this->published,
             'service_id' => (int) $this->service_id,
         ];
