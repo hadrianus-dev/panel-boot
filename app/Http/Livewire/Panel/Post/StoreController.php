@@ -41,7 +41,7 @@ class StoreController extends Component
         'post.description' => [
             'nullable',
             'string',
-            'max:120',
+            'min:3',
         ],
         'post.category_id' => [
             'nullable',

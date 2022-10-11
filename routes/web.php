@@ -31,7 +31,6 @@ use App\Http\Livewire\Panel\User\UpdateController as UserUpdateController;
 use Illuminate\Support\Facades\Route;
 
 
-
 Route::get('/login', LoginController::class)->name('login');
 
 Route::middleware('auth')->group(function(){
@@ -40,7 +39,6 @@ Route::middleware('auth')->group(function(){
     Route::post('register', RegisterController::class)->name('register');
 });
 
-
 Route::middleware('auth:sanctum')->prefix('user')->as('user')->group(function(){
     Route::get('/', UserIndexController::class)->name('index'); 
     Route::get('/store', UserStoreController::class)->name('store'); 
@@ -48,7 +46,6 @@ Route::middleware('auth:sanctum')->prefix('user')->as('user')->group(function(){
 /*  Route::get('{user:key}', UserShow::class)->name('show');  */
 });
 
- 
 Route::middleware('auth:sanctum')->prefix('category')->as('category')->group(function(){
     Route::get('/', IndexController::class)->name('index'); 
     Route::get('/store', StoreController::class)->name('store'); 

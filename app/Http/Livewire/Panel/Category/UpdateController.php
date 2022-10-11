@@ -33,7 +33,7 @@ class UpdateController extends Component
         'Category.description' => [
             'nullable',
             'string',
-            'max:120',
+            'min:3',
         ],
         'Category.parent' => [
             'nullable',

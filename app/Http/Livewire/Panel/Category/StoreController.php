@@ -39,7 +39,7 @@ class StoreController extends Component
         'category.description' => [
             'nullable',
             'string',
-            'max:120',
+            'min:3',
         ],
         'category.parent' => [
             'nullable',

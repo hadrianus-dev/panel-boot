@@ -39,7 +39,7 @@ class StoreController extends Component
         'service.description' => [
             'nullable',
             'string',
-            'max:120',
+            'min:3',
         ],
         'service.category_id' => [
             'nullable',
