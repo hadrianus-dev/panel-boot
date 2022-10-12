@@ -61,6 +61,10 @@ class StoreController extends Component
             'nullable',
             'string',
         ],
+        'portfolio.external_link' => [
+            'nullable',
+            'url',
+        ],
         'portfolio.local' => [
             'nullable',
             'string',

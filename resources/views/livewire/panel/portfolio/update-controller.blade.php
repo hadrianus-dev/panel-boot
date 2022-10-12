@@ -25,7 +25,6 @@
                                         <div class="col-lg-10">
                                             <input wire:model='portfolio.title' type="text" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                             @error('portfolio.title') <span class="text-danger error">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -35,7 +34,6 @@
                                         <div class="col-lg-10">
                                             <textarea wire:model.lazy='portfolio.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
                                             @error('portfolio.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -43,23 +41,20 @@
                                         <div class="col-lg-10">
                                             <textarea wire:model.lazy='portfolio.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('portfolio.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Cliente</label>
                                         <div class="col-lg-10">
-                                            <input wire:model='portfolio.client' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)">
+                                            <input wire:model='portfolio.client' class="form-control" rows="10" placeholder="Insira a descrição completa (opcional)">
                                             @error('portfolio.client') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Local</label>
                                         <div class="col-lg-10">
-                                            <input wire:model='portfolio.local' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)">
+                                            <input wire:model='portfolio.local' class="form-control" rows="10" placeholder="Insira a descrição completa (opcional)">
                                             @error('portfolio.local') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -69,7 +64,6 @@
                                         <div class="col-lg-5">
                                             <input wire:model='portfolio.date_start' type="date" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                             @error('portfolio.date_start') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -79,7 +73,6 @@
                                         <div class="col-lg-5">
                                             <input wire:model='portfolio.date_finish' type="date" class="form-control" id="validationCustom01"  placeholder="Titulo" required>
                                             @error('portfolio.date_finish') <span class="invalid-feedback">{{ $message }}</span>@enderror
-                                            
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -108,6 +101,13 @@
                                                 <option value="0">Rascunho</option>
                                             </select>
                                             @error('portfolio.published') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-lg-2 col-form-label" for="validationCustom04">Local</label>
+                                        <div class="col-lg-10">
+                                            <input wire:model='portfolio.external_link' class="form-control" placeholder="Insira um link de video">
+                                            @error('portfolio.external_link') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="mb-3 row">

@@ -17,6 +17,7 @@ class PortfolioValueObject
         public null|string $date_finish = null,
         public null|string $local = null,
         public null|string $client = null,
+        public null|string $external_link = null,
         public null|string $cover = null,
         public null|bool $published = false,
         public int $service_id
@@ -34,6 +35,7 @@ class PortfolioValueObject
             'date_finish' => Carbon::parse($this->date_finish)->format('Y-m-d'),
             'local' => $this->local,
             'client' => $this->client,
+            'external_link' => $this->external_link,
             'cover' => $this->cover,
             'published' => $this->published,
             'service_id' => (int) $this->service_id,

@@ -19,6 +19,7 @@ class PortfolioFactory
             service_id: (isset($attributes['service_id'])) ? (int) $attributes['service_id'] : null, 
             local: $attributes['local'], 
             client: $attributes['client'], 
+            external_link: $attributes['external_link'], 
             cover: $attributes['cover'], 
             published: $attributes['published'], 
         );

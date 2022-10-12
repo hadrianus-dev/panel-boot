@@ -31,6 +31,7 @@ class Portfolio extends Model
         'date_finish',
         'local',
         'client',
+        'external_link',
         'cover',
         'published',
         'service_id'

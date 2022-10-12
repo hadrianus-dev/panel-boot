@@ -68,6 +68,10 @@ class UpdateController extends Component
             'nullable',
             'string',
         ],
+        'portfolio.external_link' => [
+            'nullable',
+            'url',
+        ],
         'portfolio.service_id' => [
             'nullable',
             'integer',
@@ -126,7 +130,7 @@ class UpdateController extends Component
         );
 
         if($this->image){
-            $this->ImageUpload();
+            $this->ImageUpload(); 
         }
 
         if($this->cover):

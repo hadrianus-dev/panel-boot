@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('local')->nullable();
             $table->text('client')->nullable();
             
+            $table->text('external_link')->nullable();
             $table->text('cover')->nullable();
             $table->boolean('published')->default(false);
 
