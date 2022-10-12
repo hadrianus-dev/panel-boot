@@ -31,7 +31,8 @@ return new class extends Migration
             $table->text('external_link')->nullable();
             $table->text('cover')->nullable();
             $table->boolean('published')->default(false);
-
+            $table->decimal('views')->nullable();
+            
             $table->foreignId('service_id')->index()->constrained()->OnDelete('CASCADE');
             $table->timestamps();
         });

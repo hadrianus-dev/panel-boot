@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
 
             $table->boolean('published')->default(false);
             $table->text('cover')->nullable();
+            $table->decimal('views')->nullable();
             
             $table->foreignId('category_id')->index()->constrained()->OnDelete('CASCADE');
             $table->timestamps();

@@ -104,7 +104,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-lg-2 col-form-label" for="validationCustom04">Local</label>
+                                        <label class="col-lg-2 col-form-label" for="validationCustom04">Link Externo (Video)</label>
                                         <div class="col-lg-10">
                                             <input wire:model='portfolio.external_link' class="form-control" placeholder="Insira um link de video">
                                             @error('portfolio.external_link') <span class="invalid-feedback">{{ $message }}</span>@enderror
