@@ -20,7 +20,7 @@
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
-                                    {{-- <th></th> --}}
+                                    <th></th> 
                                     <th>Titulo</th>
                                     <th>Serviço</th>
                                     <th>Relacionados</th>
@@ -32,7 +32,7 @@
                             <tbody>
                                 @foreach ($portfolio as $item)   
                                 <tr>
-                                    {{-- <td><img class="rounded-circle" width="35" src="{{asset('storage/'.$item['cover'])}}" alt="NULL"></td> --}}
+                                    <td><img class="" width="35" src="{{asset('storage/'.$item['cover'])}}" alt="NULL"></td>
                                     <td>{{$item['title']}}</td>
                                     <td>{{$item->service->title}}</td>
                                     <td>{{$item->gallery()->count()}} Registos</td>

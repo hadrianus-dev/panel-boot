@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Livewire\Panel\Aparence\IndexController as AparenceIndexController;
+use App\Http\Livewire\Panel\Aparence\StoreController as AparenceStoreController;
+use App\Http\Livewire\Panel\Aparence\UpdateController as AparenceUpdateController;
 use App\Http\Livewire\Panel\Auth\LoginController;
 use App\Http\Livewire\Panel\Auth\RegisterController;
 use App\Http\Livewire\Panel\Category\IndexController;
@@ -84,6 +87,12 @@ Route::middleware('auth:sanctum')->prefix('team')->as('team')->group(function(){
     Route::get('/', TeamIndexController::class)->name('index'); 
     Route::get('/store', TeamStoreController::class)->name('store'); 
     Route::get('{team:key}', TeamUpdateController::class)->name('update'); 
+});
+
+Route::middleware('auth:sanctum')->prefix('aparence')->as('aparence')->group(function(){
+    Route::get('/', AparenceIndexController::class)->name('index'); 
+    Route::get('/store', AparenceStoreController::class)->name('store'); 
+    Route::get('{aparence:key}', AparenceUpdateController::class)->name('update'); 
 });
 
 Route::middleware('auth:sanctum')->prefix('faq')->as('faq')->group(function(){
