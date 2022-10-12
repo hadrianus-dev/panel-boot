@@ -27,10 +27,13 @@ class UpdateController extends Component
 
     public $services;
 
+    public $image;
     public $cover;
+    public $oldImage;
     public $oldCover;
     public $oldCovers;
     private $coverFullName;
+    private $imageFullName;
     public $covers = [];
     
     protected $rules = [
@@ -57,6 +60,14 @@ class UpdateController extends Component
             'nullable',
             'date',
         ],
+        'portfolio.client' => [
+            'nullable',
+            'string',
+        ],
+        'portfolio.local' => [
+            'nullable',
+            'string',
+        ],
         'portfolio.service_id' => [
             'nullable',
             'integer',
@@ -73,11 +84,20 @@ class UpdateController extends Component
             'nullable',
             'array',
         ],
+        'image' => [
+            'nullable',
+            'image',
+        ],
     ];
 
     public function mount(Service $services, Gallery $gallery, Portfolio $portfolio)
     {
         $this->portfolio = $portfolio;
+        
+        if($portfolio->cover !== null):
+        $this->oldImage = $portfolio->cover;
+        endif;
+
         $this->oldCovers = $gallery::where([
             ['portfolio_id', $portfolio->id],
             ['status', false]
@@ -86,18 +106,28 @@ class UpdateController extends Component
             ['portfolio_id', $portfolio->id],
             ['status', true]
             ])->get();
-    
+        
         $this->services = $services->where('published', true)->get();
     }
 
     public function update()
     {
         $data = $this->validate();
-        #dd(date($data['portfolio']['date_start']));
+        #dd($data['portfolio']);
+        if($this->image){
+            $data['portfolio']['cover'] = $this->setNameCover($data);
+        }else{
+            $data['portfolio']['cover'] = $this->portfolio->cover;
+        }
+
         UpdatePortfolio::dispatch(
             Portfolio: $this->portfolio,
             object: PortfolioFactory::create(attributes: $data['portfolio'])
         );
+
+        if($this->image){
+            $this->ImageUpload();
+        }
 
         if($this->cover):
             $this->UploadAtualGallery();
@@ -116,6 +146,25 @@ class UpdateController extends Component
         return redirect('portfolio');
     }
 
+    
+    private function setNameCover($data): string
+    {
+        $getExtension = $this->image->getClientOriginalExtension(); 
+        $ImageFullName = Str::slug($data['portfolio']['title']) .'-'. uniqid().'.'. $getExtension;
+        $mountPathImage = 'images/portfolios';  
+        $theImagePath = $mountPathImage.'/'.$ImageFullName;
+        $this->imageFullName = $ImageFullName;
+        return $theImagePath;
+    }
+
+    public function ImageUpload(): void
+    {
+        $image = $this->validate([
+            'image' => 'image|required'
+        ]);
+        $mountPathImage = 'images/portfolios';  
+        $image['image']->storeAs('public/'.$mountPathImage, $this->imageFullName);
+    }
     
     public function UploadAtualGallery(): void
     {

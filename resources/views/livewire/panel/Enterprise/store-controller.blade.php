@@ -41,14 +41,14 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='enterprise.body' class="form-control" id="validationCustom04"  rows="10" placeholder="Insira uma descrição" required></textarea>
+                                            <textarea wire:model.lazy='enterprise.body' class="form-control" id="validationCustom04"  rows="10" placeholder="Insira uma descrição" required></textarea>
                                             @error('enterprise.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição Completa</label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='enterprise.description' class="form-control" rows="12" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            <textarea wire:model.lazy='enterprise.description' class="form-control" rows="12" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('enterprise.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
@@ -58,7 +58,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='enterprise.mission' class="form-control" rows="6" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            <textarea wire:model.lazy='enterprise.mission' class="form-control" rows="6" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('enterprise.mission') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='enterprise.vision' class="form-control" rows="6" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            <textarea wire:model.lazy='enterprise.vision' class="form-control" rows="6" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('enterprise.vision') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='enterprise.value' class="form-control" rows="6" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            <textarea wire:model.lazy='enterprise.value' class="form-control" rows="6" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('enterprise.value') <span class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>

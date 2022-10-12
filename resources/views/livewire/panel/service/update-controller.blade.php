@@ -32,7 +32,7 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='Service.body' class="form-control" id="validationCustom04"  rows="20" placeholder="Insira uma descrição" required></textarea>
+                                            <textarea wire:model.lazy='Service.body' class="form-control" id="validationCustom04"  rows="20" placeholder="Insira uma descrição" required></textarea>
                                             @error('Service.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             
                                         </div>
@@ -40,7 +40,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição Completa</label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='Service.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            <textarea wire:model.lazy='Service.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('Service.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             <div class="invalid-feedback">
                                                 Por favor, precisa inserir uma breve Ddescrição

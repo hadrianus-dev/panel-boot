@@ -4,12 +4,8 @@ namespace App\Http\Livewire\Panel\Portfolio;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use Domain\Service\Models\Service;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Spatie\QueryBuilder\QueryBuilder;
 use Domain\Portfolio\Models\Portfolio;
-use Spatie\QueryBuilder\AllowedFilter;
 use Illuminate\Support\Facades\Storage;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 

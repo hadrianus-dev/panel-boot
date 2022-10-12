@@ -29,6 +29,7 @@ class StoreController extends Component
     public $cover = [];
     public $covers = [];
     private $coverFullName;
+    private $imageFullName;
     
     protected $rules = [
         'portfolio.title' => [
@@ -102,19 +103,21 @@ class StoreController extends Component
 
     public function submit()
     {
-        $data = $this->validate()['portfolio'];
-        #dd($data['portfolio']);
-        $this->Data = $data;
+        $data = $this->validate();
+        $this->Data = $data['portfolio'];
+        $this->Data['cover'] = null;
 
         if($this->image){
             $this->Data['cover'] = $this->setNameCover($data);
-            dd($this->Data['cover']);
-            $this->ImageUpload();
         }
 
         CreatePortfolio::dispatch(
             object: PortfolioFactory::create(attributes: $this->Data)
         );
+
+        if($this->image){
+            $this->ImageUpload();
+        }
         
         if($this->cover):
         $this->UploadAtualGallery();
@@ -136,10 +139,10 @@ class StoreController extends Component
     private function setNameCover($data): string
     {
         $getExtension = $this->image->getClientOriginalExtension(); 
-        $ImageFullName = Str::slug($data['title']) .'-'. uniqid().'.'. $getExtension;
+        $ImageFullName = Str::slug($data['portfolio']['title']) .'-'. uniqid().'.'. $getExtension;
         $mountPathImage = 'images/portfolios';  
         $theImagePath = $mountPathImage.'/'.$ImageFullName;
-        $this->coverFullName = $ImageFullName;
+        $this->imageFullName = $ImageFullName;
         return $theImagePath;
     }
 
@@ -149,7 +152,7 @@ class StoreController extends Component
             'image' => 'image|required'
         ]);
         $mountPathImage = 'images/portfolios';  
-        $image['cover']->storeAs('public/'.$mountPathImage, $this->coverFullName);
+        $image['image']->storeAs('public/'.$mountPathImage, $this->imageFullName);
     }
 
     public function UploadAtualGallery(): void

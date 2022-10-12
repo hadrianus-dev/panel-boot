@@ -78,7 +78,7 @@
                                         </label>
                                         <div class="col-lg-10">
                                             <select wire:model='Category.published' wire:change="filterChengeStatus" class="default-select wide form-control" id="validationCustom05">
-                                                <option  Category-display="{{($Category['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
+                                                <option  data-display="{{($Category['published'] == true) ? 'Publicado' : 'Rascunho'}} ">Selecionar</option>
                                                 <option value='1'>Publicar</option>
                                                 <option value='0'>Rascunho</option>
                                             </select>

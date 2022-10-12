@@ -33,7 +33,7 @@
                                                 class="text-danger">*</span>
                                         </label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='portfolio.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
+                                            <textarea wire:model.lazy='portfolio.body' class="form-control" id="validationCustom04"  rows="5" placeholder="Insira uma descrição" required></textarea>
                                             @error('portfolio.body') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             
                                         </div>
@@ -41,7 +41,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-lg-2 col-form-label" for="validationCustom04">Descrição Completa</label>
                                         <div class="col-lg-10">
-                                            <textarea wire:model='portfolio.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
+                                            <textarea wire:model.lazy='portfolio.description' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)"></textarea>
                                             @error('portfolio.description') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             
                                         </div>
@@ -51,6 +51,14 @@
                                         <div class="col-lg-10">
                                             <input wire:model='portfolio.client' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)">
                                             @error('portfolio.client') <span class="invalid-feedback">{{ $message }}</span>@enderror
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-lg-2 col-form-label" for="validationCustom04">Local</label>
+                                        <div class="col-lg-10">
+                                            <input wire:model='portfolio.local' class="form-control" rows="5" placeholder="Insira a descrição completa (opcional)">
+                                            @error('portfolio.local') <span class="invalid-feedback">{{ $message }}</span>@enderror
                                             
                                         </div>
                                     </div>
