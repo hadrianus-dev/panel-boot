@@ -5,21 +5,22 @@ declare(strict_types=1);
 namespace Domain\Portfolio\Models;
 
 use Domain\Gallery\Models\Gallery;
+use Domain\Service\Models\Service;
+use Shetabit\Visitor\Traits\Visitable;
 use Illuminate\Database\Eloquent\Model;
 use Domain\Shared\Models\Concerns\HasSlug;
-use Domain\Portfolio\Models\Builders\PortfolioBuilder;
-use Domain\Service\Models\Service;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Domain\Portfolio\Models\Builders\PortfolioBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 
 class Portfolio extends Model
 {
     use HasKey;
     use HasSlug;
     use HasFactory;
+    use Visitable;
 
     protected $fillable = [
         'key',

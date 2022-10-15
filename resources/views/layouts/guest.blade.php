@@ -8,10 +8,10 @@
 	<meta name="author" content="" />
 	<meta name="robots" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Jobick : Job Admin Bootstrap 5 Template" />
-	<meta property="og:title" content="Jobick : Job Admin Bootstrap 5 Template" />
-	<meta property="og:description" content="Jobick : Job Admin Bootstrap 5 Template" />
-	<meta property="og:image" content="https://jobick.dexignlab.com/xhtml/social-image.png" />
+	<meta name="description" content="Pinel Admin - Login" />
+	<meta property="og:title" content="Pinel Admin - Login" />
+	<meta property="og:description" content="Pinel Admin - Login" />
+	<meta property="og:image" content="#" />
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- PAGE TITLE HERE -->
@@ -20,7 +20,7 @@
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <link href="{{asset('base/css/style.css')}}" rel="stylesheet">
-	@include('sweetalert::alert')
+
     @livewireStyles
 </head>
 

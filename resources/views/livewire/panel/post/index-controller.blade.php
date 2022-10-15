@@ -23,6 +23,7 @@
                                 <tr>
                                     <th></th>
                                     <th>Titulo</th>
+                                    <th>Views</th>
                                     <th>Categoria</th>
                                     <th>Relaciodos</th>
                                     <th>Status</th>
@@ -35,8 +36,9 @@
                                 <tr>
                                     <td><img class="" width="35" src="{{asset('storage/'.$item['cover'])}}" alt="NULL"></td>
                                     <td>{{$item['title']}}</td>
-                                    <td>Architect</td>
-                                    <td>Male</td>
+                                    <td>{{$item->visitLogs()->count()}} Views</td>
+                                    <td>{{$item->category->title}}</td>
+                                    <td>{{$item->gallery()->count()}} Arquivo(s)</td>
                                     <td><span class="badge light badge-{{($item['published'] === true)? 'success' : 'warning'}}">
                                         {{($item['published'] === true)? 'Publicado' : 'Pendente'}}</span></td>
                                     <td>{{$item['created_at']->diffForHumans()}}</td>

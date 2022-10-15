@@ -38,7 +38,9 @@
                                     <td>
                                         <div class="d-flex">
                                             <a href="{{route('aparenceupdate', $item['key'])}}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+                                            @if (Auth::user()->id === 1)
                                             <a href="#" wire:click="checkDelete('{{$item['key']}}')" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            @endif
                                         </div>												
                                     </td>												
                                 </tr>

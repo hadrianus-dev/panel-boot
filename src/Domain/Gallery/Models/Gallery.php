@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Domain\Gallery\Models;
 
+use Domain\Post\Models\Post;
+use Domain\Portfolio\Models\Portfolio;
+use Shetabit\Visitor\Traits\Visitable;
 use Illuminate\Database\Eloquent\Model;
 use Domain\Shared\Models\Concerns\HasSlug;
 use Domain\Gallery\Models\Builders\GalleryBuilder;
-use Domain\Portfolio\Models\Portfolio;
-use Domain\Post\Models\Post;
 use JustSteveKing\KeyFactory\Models\Concerns\HasKey;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,6 +19,7 @@ class Gallery extends Model
     use HasKey;
     use HasSlug;
     use HasFactory;
+    use Visitable;
 
     protected $fillable = [
         'key',
