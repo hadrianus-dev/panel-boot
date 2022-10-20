@@ -11,10 +11,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Todas as Postagens</h4>
-                    <button type="button" class="btn btn-primary" 
-                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Adicionar Novo<span
+                    <a href="{{route('poststore')}}" class="btn btn-primary">Adicionar Novo<span
                         class="btn-icon-end"><i class="fa fa-plus"></i></span>
-                    </button>
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

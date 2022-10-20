@@ -1,7 +1,7 @@
 <div>
 	<div class="row page-titles">
 		<ol class="breadcrumb">
-			<li class="breadcrumb-item active"><a href="javascript:void(0)">Categoria</a></li>
+			<li class="breadcrumb-item active"><a href="javascript:void(0)">Postagens</a></li>
 			<li class="breadcrumb-item"><a href="javascript:void(0)">Editar</a></li>
 		</ol>
     </div>
@@ -120,7 +120,7 @@
                                                 <h5 class="text-primary d-inline">Prever Capa</h5>
                                                 @if ($cover)
                                                     <a href="#" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-10">
-                                                        <img src="{{ ($cover) ? $cover->temporaryUrl() : asset('storage/'.$oldCover) }}" alt="" class="img-fluid mt-4 mb-4 w-100">
+                                                        <img src="{{$cover->temporaryUrl()}}" alt="" class="img-fluid mt-4 mb-4 w-100">
                                                     </a>
                                                 @elseif ($oldCover !== null)
                                                     <a href="#" class="mb-1 col-lg-4 col-xl-4 col-sm-4 col-10">
@@ -129,26 +129,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="col-lg-5">
-                                            <div class="profile-interest">
-                                                <h5 class="text-primary d-inline">Prever Relacionados (Máximo quatros arquivos)</h5>
-                                                <div class="row mt-4 sp4" id="lightgallery">
-                                                    @if ($covers)
-                                                        @foreach ($covers as $item)
-                                                            <a href="#" class="mb-1 col-lg-4 col-xl-6 col-sm-4 col-6">
-                                                                <img src="{{ $item->temporaryUrl() }}" alt="" class="img-fluid">
-                                                            </a>
-                                                        @endforeach
-                                                    @elseif ($oldCovers !== null)
-                                                        @foreach ($oldCovers as $item)
-                                                            <a href="#" class="mb-1 col-lg-4 col-xl-6 col-sm-4 col-6">
-                                                                <img src="{{ asset('storage/'.$item['cover']) }}" alt="" class="img-fluid">
-                                                            </a>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                     </div>
                                  
                                     <div class="text-right">

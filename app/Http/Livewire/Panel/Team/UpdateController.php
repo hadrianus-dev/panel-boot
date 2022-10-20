@@ -129,11 +129,8 @@ class UpdateController extends Component
 
     private function deleteOlldFiles()
     {
-        if($this->oldCovers):
-            for ($i=0; $i < count($this->oldCovers); $i++) { 
-                $cover = $this->oldCovers[$i]['cover'];
-                Storage::disk('public')->delete($cover);
-            }
+        if($this->oldCover):
+            Storage::disk('public')->delete($this->oldCover);
         endif;
     }
 
